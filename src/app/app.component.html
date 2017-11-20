@@ -7,26 +7,26 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link"  [routerLink]="['/']">Orderer organization
+        <a class="nav-link"  [routerLink]="['/']" href="#">Orderer organization
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/peer']">Peer organization</a>
+        <a class="nav-link" [routerLink]="['/peer']" href="#">Peer organization</a>
       </li>
     </ul>
-    <span class="navbar-text">
-      help
+    <span class="navbar-text" >
+     <a [routerLink]="['/help']" href="#" class="nav">Help</a>
     </span>
   </div>
 </nav>
 <div class="container">
   <div class="row">
-    <div class="col-8">
+    <div class="col-10">
       <router-outlet>
       </router-outlet>
     </div>
-    <div class="col-4">
+    <div class="col-2">
       Step flow
     </div>
   </div>
