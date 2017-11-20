@@ -1,12 +1,86 @@
-
-<section style="background:#efefe9;">
-    <div class="container">
-        <div class="board">
-            <msw-navbar></msw-navbar>
-            <div class="tab-content">
-                <router-outlet name="peerSection"></router-outlet>
+<div class="row">
+  <div class="col-8">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Peer</h3>
+      </div>
+      <div class="container-fluid">
+        <div class="panel-body panel-success">
+          <form name="peerForm">
+            <div class="form-group has-feedback" data-ng-class="peerForm.name.$valid ? 'has-success' : (peerForm.name.$pristine ? '' : 'has-error')">
+              <label class="control-label" for="name">Org Name:</label>
+              <input id="name" name="name" type="text" data-ng-model="FC.peer.name" class="form-control" ng-init="FC.peer.name='Org1'"
+                required />
+              <span class="glyphicon form-control-feedback" data-ng-class="peerForm.name.$valid ? 'glyphicon-ok' : (peerForm.name.$pristine ? '' : 'glyphicon-remove')"></span>
             </div>
+            <div class="form-group has-feedback" data-ng-class="peerForm.domain.$valid ? 'has-success' : (peerForm.domain.$pristine ? '' : 'has-error')">
+              <label class="control-label" for="domain">Domain Name:</label>
+              <input id="domain" name="domain" type="text" data-ng-model="FC.peer.domain" class="form-control" ng-init="FC.peer.domain='org1.example.com'"
+                required />
+              <span class="glyphicon form-control-feedback" data-ng-class="peerForm.domain.$valid ? 'glyphicon-ok' : (peerForm.domain.$pristine ? '' : 'glyphicon-remove')"></span>
+            </div>
+            <div class="form-group has-feedback" data-ng-class="peerForm.peerCount.$valid ? 'has-success' : (peerForm.peerCount.$pristine ? '' : 'has-error')">
+              <label class="control-label" for="peerCount">Peer count:</label>
+              <input id="peerCount" name="peerCount" type="number" min="0" max="150" data-ng-model="FC.peer.peerCount" class="form-control"
+                ng-init="FC.peer.peerCount=2" required />
+              <span class="glyphicon form-control-feedback" data-ng-class="peerForm.peerCount.$valid ? 'glyphicon-ok' : (peerForm.peerCount.$pristine ? '' : 'glyphicon-remove')"></span>
+            </div>
+            <div class="form-group has-feedback" data-ng-class="peerForm.userCount.$valid ? 'has-success' : (peerForm.userCount.$pristine ? '' : 'has-error')">
+              <label class="control-label" for="userCount">User count:</label>
+              <input id="userCount" name="userCount" type="number" min="0" max="150" data-ng-model="FC.peer.userCount" class="form-control"
+                ng-init="FC.peer.userCount=1" required />
+              <span class="glyphicon form-control-feedback" data-ng-class="peerForm.userCount.$valid ? 'glyphicon-ok' : (peerForm.userCount.$pristine ? '' : 'glyphicon-remove')"></span>
+            </div>
+            <button id="save-btn" class="btn btn-success" data-ng-click="FC.save(FC.peer)" data-ng-disabled="peerForm.$invalid">Save
+              <span class="glyphicon glyphicon-saved"></span>
+            </button>
+            <button id="save-btn" class="btn btn-success" data-ng-click="FC.submit()" data-ng-disabled="!(FC.state == FC.states.save)">Submit
+              <span class="glyphicon glyphicon-send"></span>
+            </button>
+
+            <div class="form-group">
+                <div class="panel-body">
+                    <pre id="peerForm">Peer = {{FC.peerForm| json}}</pre>
+                </div>
+              </div>
+          </form>
         </div>
-        <pre>{{ formData | json }}</pre>
+      </div>
     </div>
-</section>
+  </div>
+  <div class="col-4">
+    <div class="panel panel-success">
+      <div class="panel-heading">Task list</div>
+      <div class="panel-body">
+        Step flow Generate crypto certificates
+        <br> Generate docker-compose file
+        <br>Run peers
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <form-wizard>
+        <wizard-step [title]="'Step1'"  (onNext)="onStep1Next($event)">
+          <h1>Step1</h1>
+        </wizard-step>
+        <wizard-step [title]="'Step2'" (onNext)="onStep2Next($event)">
+          <h1>Step2</h1>
+        </wizard-step>
+        <wizard-step [title]="'Step3'" (onNext)="onStep3Next($event)">
+          <h1>Step3</h1>
+        </wizard-step>
+        <wizard-step [title]="'Step4'" (onComplete)="onComplete($event)">
+          <div [ngSwitch]="isCompleted">
+            <div *ngSwitchDefault>
+              <h1>Step4</h1>
+            </div>
+            <div *ngSwitchCase="true">
+              <h4>Thank you! You have completed all the steps.</h4>
+            </div>
+          </div>
+        </wizard-step>
+      </form-wizard>
+     -->

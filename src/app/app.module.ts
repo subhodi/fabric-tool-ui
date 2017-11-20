@@ -13,9 +13,9 @@ import { HelpComponent } from './components/help/help.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 const appRoutes: Routes = [
-  { path: '', component: OrdererComponent },
+  { path: '', component: PeerComponent },
   {
-    path: 'peer', component: PeerComponent, children: [
+    path: 'orderer', component: OrdererComponent, children: [
       { path: ':index', component: HelpComponent },
       { path: ':index/edit', component: HelpComponent, outlet: 'peerSection' }
     ]
