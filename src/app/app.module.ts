@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { DataService } from './services/data.service';
 
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormWizardModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [DataService],
