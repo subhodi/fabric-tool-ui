@@ -1,3 +1,21 @@
-<p>
-  orderer works!
-</p>
+<form-wizard>
+    <wizard-step [title]="'Step1'"  (onNext)="onStep1Next($event)">
+      <h1>Step1</h1>
+    </wizard-step>
+    <wizard-step [title]="'Step2'" (onNext)="onStep2Next($event)">
+      <h1>Step2</h1>
+    </wizard-step>
+    <wizard-step [title]="'Step3'" (onNext)="onStep3Next($event)">
+      <h1>Step3</h1>
+    </wizard-step>
+    <wizard-step [title]="'Step4'" (onComplete)="onComplete($event)">
+      <div [ngSwitch]="isCompleted">
+        <div *ngSwitchDefault>
+          <h1>Step4</h1>
+        </div>
+        <div *ngSwitchCase="true">
+          <h4>Thank you! You have completed all the steps.</h4>
+        </div>
+      </div>
+    </wizard-step>
+  </form-wizard>

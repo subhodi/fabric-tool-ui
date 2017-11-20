@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-peer',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./peer.component.css']
 })
 export class PeerComponent implements OnInit {
-
+  title = 'Multi-Step Wizard';
   constructor() { }
 
   ngOnInit() {
   }
 
 }
+
+
+

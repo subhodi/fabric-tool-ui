@@ -1,3 +1,12 @@
-<p>
-  peer works!
-</p>
+
+<section style="background:#efefe9;">
+    <div class="container">
+        <div class="board">
+            <msw-navbar></msw-navbar>
+            <div class="tab-content">
+                <router-outlet name="peerSection"></router-outlet>
+            </div>
+        </div>
+        <pre>{{ formData | json }}</pre>
+    </div>
+</section>
