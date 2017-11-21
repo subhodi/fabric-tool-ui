@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { PeerService } from '../../services/peer.service';
 
 @Component({
   selector: 'app-peer',
@@ -11,7 +11,7 @@ export class PeerComponent implements OnInit {
   state: States;
   peerForm: Object;
   peer: Object;
-  constructor(private dataService: DataService) {
+  constructor(private peerService: PeerService) {
   }
 
   ngOnInit() {
@@ -52,7 +52,7 @@ export class PeerComponent implements OnInit {
   }
 
   submit() {
-    this.dataService.submit(this.peerForm).subscribe(data => {
+    this.peerService.submit(this.peerForm).subscribe(data => {
       console.log(data);
       this.state = States.cryptoConfigFile;
       this.cryptogen();
@@ -60,7 +60,7 @@ export class PeerComponent implements OnInit {
   }
 
   cryptogen() {
-    this.dataService.cryptogen().subscribe(data => {
+    this.peerService.cryptogen().subscribe(data => {
       console.log(data);
       this.state = States.cryptogen;
       this.dockerCompose();
@@ -68,7 +68,7 @@ export class PeerComponent implements OnInit {
   }
 
   dockerCompose() {
-    this.dataService.dockerCompose().subscribe(data => {
+    this.peerService.dockerCompose().subscribe(data => {
       console.log(data);
       this.state = States.dockerCompose;
       this.startPeer();
@@ -76,7 +76,7 @@ export class PeerComponent implements OnInit {
   }
 
   startPeer() {
-    this.dataService.startPeer().subscribe(data => {
+    this.peerService.startPeer().subscribe(data => {
       console.log(data);
       this.state = States.peerUp;
     }, err => console.error(err));

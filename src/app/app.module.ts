@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { DataService } from './services/data.service';
+import { PeerService } from './services/peer.service';
+import { OrdererService } from './services/orderer.service';
 
 import { FormWizardModule } from 'angular2-wizard';
 
@@ -41,7 +43,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [DataService],
+  providers: [DataService, PeerService, OrdererService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
