@@ -7,18 +7,16 @@ import { PeerService } from '../../services/peer.service';
   styleUrls: ['./peer.component.css']
 })
 export class PeerComponent implements OnInit {
-  State = States;
-  state: States;
   peerForm: Object;
   peer: Object;
   status: string;
-  submitStatus: string;
-  StateStatus: StateStatus;
+  requestStatus = RequestStatus;
+  StateStatus: any = {};
+
   constructor(private peerService: PeerService) {
   }
 
   ngOnInit() {
-    this.state = States.initialized;
     this.peer = { name: 'Org1', domain: 'org1.example.com', peerCount: 2, userCount: 1 };
     this.peerForm = {
       'PeerOrgs': [
@@ -34,10 +32,11 @@ export class PeerComponent implements OnInit {
         }
       ]
     };
+
   }
 
   save(peer) {
-    this.peerForm = {
+    this.peerForm = { 
       'PeerOrgs': [
         {
           'Name': peer.name,
@@ -51,14 +50,17 @@ export class PeerComponent implements OnInit {
         }
       ]
     };
-    this.state = States.save;
-    this.status = 'success';
+    this.StateStatus.submit = RequestStatus.success;
+    this.StateStatus.cryptoConfigFile = RequestStatus.pending;
+    this.StateStatus.cryptogen = RequestStatus.pending;
+    this.StateStatus.dockerCompose = RequestStatus.pending;
+    this.StateStatus.peerUp = RequestStatus.pending;
   }
 
   submit() {
     this.peerService.submit(this.peerForm).subscribe(data => {
       console.log(data);
-      this.state = States.cryptoConfigFile;
+      this.StateStatus.cryptoConfigFile = RequestStatus.success;
       this.cryptogen();
     }, err => console.error(err));
   }
@@ -66,16 +68,15 @@ export class PeerComponent implements OnInit {
   cryptogen() {
     this.peerService.cryptogen().subscribe(data => {
       console.log(data);
-      this.state = States.cryptogen;
-      //this.dockerCompose();
-      this.submitStatus = 'failure';
+      this.StateStatus.cryptogen = RequestStatus.success;
+      this.dockerCompose();
     }, err => console.error(err));
   }
 
   dockerCompose() {
     this.peerService.dockerCompose().subscribe(data => {
       console.log(data);
-      this.state = States.dockerCompose;
+      this.StateStatus.dockerCompose = RequestStatus.success;
       this.startPeer();
     }, err => console.error(err));
   }
@@ -83,33 +84,17 @@ export class PeerComponent implements OnInit {
   startPeer() {
     this.peerService.startPeer().subscribe(data => {
       console.log(data);
-      this.state = States.peerUp;
+      this.StateStatus.peerUp = RequestStatus.success;
     }, err => console.error(err));
   }
 
 }
 
-enum States {
-  initialized = 1,
-  save,
-  cryptoConfigFile,
-  cryptogen,
-  dockerCompose,
-  peerUp
-}
-
-enum requestStatus {
+enum RequestStatus {
   pending = 1,
   success,
   failure
 }
 
-interface StateStatus {
-  submit: requestStatus;
-  cryptoConfigFile: requestStatus;
-  cryptogen: requestStatus;
-  dockerCompose: requestStatus;
-  peerUp: requestStatus;
-}
 
 

@@ -7,8 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SuccessGlyphiconComponent implements OnInit {
   @Input() status: string;
-
+  RequestStatus = RequestStatus;
   constructor() {
+
   }
 
   ngOnInit() {
@@ -16,3 +17,9 @@ export class SuccessGlyphiconComponent implements OnInit {
   }
 
 }
+enum RequestStatus {
+  pending = 1,
+  success,
+  failure
+}
+
