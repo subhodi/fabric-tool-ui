@@ -60,41 +60,23 @@ export class PeerComponent implements OnInit {
 
   cryptogen() {
     this.state = States.cryptogen;
-    // $http.post(peerApiUrl + "cryptogen-generate?fileName=crypto-config.yaml").then(function (response) {
-    //     console.log(response);
-    //     response = response.data.message + " at " + response.data.path;
-    //     state = states.cryptogen;
-    // }, function (errorResponse) {
-    //     console.log(errorResponse);
-    //     response = response.data.message;
-
-    // });
+    this.dataService.cryptogen().subscribe(data => {
+      console.log(data);
+    }, err => console.error(err));
   }
 
   dockerCompose() {
     this.state = States.dockerCompose;
-    // $http.post(peerApiUrl + "docker-compose?fileName=docker-compose.yaml").then(function (response) {
-    //     console.log(response);
-    //     response = response.data.message;
-    //     state = states.dockerCompose;
-    // }, function (errorResponse) {
-    //     console.log(errorResponse);
-    //     response = response.data.message;
-
-    // });
+    this.dataService.dockerCompose().subscribe(data => {
+      console.log(data);
+    }, err => console.error(err));
   }
 
   startPeer() {
     this.state = States.peerUp;
-    // $http.post(peerApiUrl + "?fileName=docker-compose.yaml").then(function (response) {
-    //     console.log(response);
-    //     response = response.data.message;
-    //     state = states.peerUp;
-    // }, function (errorResponse) {
-    //     console.log(errorResponse);
-    //     response = response.data.message;
-
-    // });
+    this.dataService.startPeer().subscribe(data => {
+      console.log(data);
+    }, err => console.error(err));
   }
 
 }
