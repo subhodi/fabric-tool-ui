@@ -29,7 +29,7 @@
             <button id="save-btn" class="btn btn-success" (click)="save(peer)">Save
               <span class="glyphicon glyphicon-saved"></span>
             </button>
-            <button id="save-btn" class="btn btn-success" data-ng-click="submit()">Submit
+            <button id="save-btn" class="btn btn-success" (click)="submit()">Submit
               <span class="glyphicon glyphicon-send"></span>
             </button>
 
@@ -47,9 +47,13 @@
     <div class="panel panel-success">
       <div class="panel-heading">Task list</div>
       <div class="panel-body">
-        Generate crypto certificates
-        <br> Generate docker-compose file
-        <br>Run peers
+        <ul class="list-group">
+          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.save}" ><span class="glyphicon glyphicon-ok text-success" aria-hidden="true" *ngIf="state >= State.save"></span>Submit data</li>
+          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.cryptoConfigFile}"><span class="glyphicon glyphicon-ok text-success" aria-hidden="true" *ngIf="state >= State.cryptoConfigFile"></span> Generating crypto-config file</li>
+          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.cryptogen}"><span class="glyphicon glyphicon-ok text-success" aria-hidden="true" *ngIf="state >= State.cryptogen"></span> Generating crypto certificates</li>
+          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.dockerCompose}"><span class="glyphicon glyphicon-ok text-success" aria-hidden="true" *ngIf="state >= State.dockerCompose"></span> Generating docker-compose file</li>
+          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.peerUp}"><span class="glyphicon glyphicon-ok text-success" aria-hidden="true" *ngIf="state >= State.peerUp"></span> Starting peers</li>
+        </ul>
       </div>
     </div>
   </div>

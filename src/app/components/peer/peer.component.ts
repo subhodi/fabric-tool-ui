@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./peer.component.css']
 })
 export class PeerComponent implements OnInit {
-
+  State= State;
   state: State;
   peerForm: Object;
   peer: Object;
@@ -47,6 +47,57 @@ export class PeerComponent implements OnInit {
       ]
     };
     this.state = State.save;
+  }
+
+  submit() {
+    this.state = State.cryptoConfigFile;
+    // $http.post(peerApiUrl + "yaml-file?fileName=crypto-config.yaml", peerForm).then(function (response) {
+    //     console.log(response);
+    //     response = response.data.message + " at " + response.data.path;
+    //     state = states.cryptoConfigFile;
+    // }, function (errorResponse) {
+    //     console.log(errorResponse);
+    //     response = response.data.message;
+    // });
+  }
+
+  cryptogen() {
+    this.state = State.cryptogen;
+    // $http.post(peerApiUrl + "cryptogen-generate?fileName=crypto-config.yaml").then(function (response) {
+    //     console.log(response);
+    //     response = response.data.message + " at " + response.data.path;
+    //     state = states.cryptogen;
+    // }, function (errorResponse) {
+    //     console.log(errorResponse);
+    //     response = response.data.message;
+
+    // });
+  }
+
+  dockerCompose() {
+    this.state = State.dockerCompose;
+    // $http.post(peerApiUrl + "docker-compose?fileName=docker-compose.yaml").then(function (response) {
+    //     console.log(response);
+    //     response = response.data.message;
+    //     state = states.dockerCompose;
+    // }, function (errorResponse) {
+    //     console.log(errorResponse);
+    //     response = response.data.message;
+
+    // });
+  }
+
+  startPeer() {
+    this.state = State.peerUp;
+    // $http.post(peerApiUrl + "?fileName=docker-compose.yaml").then(function (response) {
+    //     console.log(response);
+    //     response = response.data.message;
+    //     state = states.peerUp;
+    // }, function (errorResponse) {
+    //     console.log(errorResponse);
+    //     response = response.data.message;
+
+    // });
   }
 
 }
