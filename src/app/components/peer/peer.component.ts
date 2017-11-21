@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-peer',
@@ -6,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./peer.component.css']
 })
 export class PeerComponent implements OnInit {
-  State = State;
-  state: State;
+  State = States;
+  state: States;
   peerForm: Object;
   peer: Object;
-  constructor() { }
+  constructor(private dataService: DataService) {
+  }
 
   ngOnInit() {
-    this.state = State.initialized;
+    this.state = States.initialized;
     this.peer = { name: 'Org1', domain: 'org1.example.com', peerCount: 2, userCount: 1 };
     this.peerForm = {
       'PeerOrgs': [
@@ -46,23 +48,18 @@ export class PeerComponent implements OnInit {
         }
       ]
     };
-    this.state = State.save;
+    this.state = States.save;
   }
 
   submit() {
-    this.state = State.cryptoConfigFile;
-    // $http.post(peerApiUrl + "yaml-file?fileName=crypto-config.yaml", peerForm).then(function (response) {
-    //     console.log(response);
-    //     response = response.data.message + " at " + response.data.path;
-    //     state = states.cryptoConfigFile;
-    // }, function (errorResponse) {
-    //     console.log(errorResponse);
-    //     response = response.data.message;
-    // });
+    this.state = States.cryptoConfigFile;
+    this.dataService.submit(this.peerForm).subscribe(data => {
+      console.log(data);
+    }, err => console.error(err));
   }
 
   cryptogen() {
-    this.state = State.cryptogen;
+    this.state = States.cryptogen;
     // $http.post(peerApiUrl + "cryptogen-generate?fileName=crypto-config.yaml").then(function (response) {
     //     console.log(response);
     //     response = response.data.message + " at " + response.data.path;
@@ -75,7 +72,7 @@ export class PeerComponent implements OnInit {
   }
 
   dockerCompose() {
-    this.state = State.dockerCompose;
+    this.state = States.dockerCompose;
     // $http.post(peerApiUrl + "docker-compose?fileName=docker-compose.yaml").then(function (response) {
     //     console.log(response);
     //     response = response.data.message;
@@ -88,7 +85,7 @@ export class PeerComponent implements OnInit {
   }
 
   startPeer() {
-    this.state = State.peerUp;
+    this.state = States.peerUp;
     // $http.post(peerApiUrl + "?fileName=docker-compose.yaml").then(function (response) {
     //     console.log(response);
     //     response = response.data.message;
@@ -102,7 +99,7 @@ export class PeerComponent implements OnInit {
 
 }
 
-enum State {
+enum States {
   initialized = 1,
   save,
   cryptoConfigFile,
