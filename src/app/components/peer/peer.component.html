@@ -49,15 +49,15 @@
       <div class="panel-body">
         <ul class="list-group">
           <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.save}">
-            <app-success-glyphicon></app-success-glyphicon> Submit data</li>
+            <app-success-glyphicon status="{{status}}"></app-success-glyphicon> Submit data</li>
           <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.cryptoConfigFile}">
-            <app-success-glyphicon></app-success-glyphicon> Generating crypto-config file</li>
+            <app-success-glyphicon status="{{submitStatus}}"></app-success-glyphicon> Generating crypto-config file</li>
           <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.cryptogen}">
-            <app-success-glyphicon></app-success-glyphicon> Generating crypto certificates</li>
+            <app-success-glyphicon status="{{status}}"></app-success-glyphicon> Generating crypto certificates</li>
           <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.dockerCompose}">
-            <app-success-glyphicon></app-success-glyphicon> Generating docker-compose file</li>
+            <app-success-glyphicon status="{{status}}"></app-success-glyphicon> Generating docker-compose file</li>
           <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.peerUp}">
-            <app-success-glyphicon></app-success-glyphicon> Starting peers</li>
+            <app-success-glyphicon status="{{status}}"></app-success-glyphicon> Starting peers</li>
         </ul>
       </div>
     </div>

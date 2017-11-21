@@ -11,6 +11,9 @@ export class PeerComponent implements OnInit {
   state: States;
   peerForm: Object;
   peer: Object;
+  status: string;
+  submitStatus: string;
+  StateStatus: StateStatus;
   constructor(private peerService: PeerService) {
   }
 
@@ -49,6 +52,7 @@ export class PeerComponent implements OnInit {
       ]
     };
     this.state = States.save;
+    this.status = 'success';
   }
 
   submit() {
@@ -63,7 +67,8 @@ export class PeerComponent implements OnInit {
     this.peerService.cryptogen().subscribe(data => {
       console.log(data);
       this.state = States.cryptogen;
-      this.dockerCompose();
+      //this.dockerCompose();
+      this.submitStatus = 'failure';
     }, err => console.error(err));
   }
 
@@ -91,6 +96,20 @@ enum States {
   cryptogen,
   dockerCompose,
   peerUp
+}
+
+enum requestStatus {
+  pending = 1,
+  success,
+  failure
+}
+
+interface StateStatus {
+  submit: requestStatus;
+  cryptoConfigFile: requestStatus;
+  cryptogen: requestStatus;
+  dockerCompose: requestStatus;
+  peerUp: requestStatus;
 }
 
 
