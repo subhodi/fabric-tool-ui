@@ -44,7 +44,7 @@
     </div>
   </div>
   <div class="col-4">
-    <div class="panel panel-success">
+    <div class="panel" [ngClass]="apiResponse.status == true ? 'panel-success' : 'panel-danger'">
       <div class="panel-heading">Task list</div>
       <div class="panel-body">
         <ul class="list-group">
@@ -59,6 +59,9 @@
           <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.peerUp != requestStatus.pending && StateStatus.peerUp}">
             <app-success-glyphicon status="{{ StateStatus.peerUp}}"></app-success-glyphicon> Starting peers</li>
         </ul>
+      </div>
+      <div class="panel-footer">
+        <p class="text-left">{{apiResponse.message}} {{ apiResponse.path}}</p>
       </div>
     </div>
   </div>
