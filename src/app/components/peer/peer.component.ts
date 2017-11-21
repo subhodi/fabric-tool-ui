@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./peer.component.css']
 })
 export class PeerComponent implements OnInit {
-  State= State;
+  State = State;
   state: State;
   peerForm: Object;
   peer: Object;

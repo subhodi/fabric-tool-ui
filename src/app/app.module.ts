@@ -12,6 +12,7 @@ import { OrdererComponent } from './components/orderer/orderer.component';
 import { PeerComponent } from './components/peer/peer.component';
 import { HelpComponent } from './components/help/help.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SuccessGlyphiconComponent } from './components/helper/success-glyphicon/success-glyphicon.component';
 
 const appRoutes: Routes = [
   { path: '', component: PeerComponent },
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     PeerComponent,
     HelpComponent,
     NavbarComponent,
+    SuccessGlyphiconComponent,
   ],
   imports: [
     BrowserModule,

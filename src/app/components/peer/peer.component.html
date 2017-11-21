@@ -48,11 +48,11 @@
       <div class="panel-heading">Task list</div>
       <div class="panel-body">
         <ul class="list-group">
-          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.save}" ><span class="glyphicon glyphicon-ok text-success" aria-hidden="true" *ngIf="state >= State.save"></span>Submit data</li>
-          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.cryptoConfigFile}"><span class="glyphicon glyphicon-ok text-success" aria-hidden="true" *ngIf="state >= State.cryptoConfigFile"></span> Generating crypto-config file</li>
-          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.cryptogen}"><span class="glyphicon glyphicon-ok text-success" aria-hidden="true" *ngIf="state >= State.cryptogen"></span> Generating crypto certificates</li>
-          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.dockerCompose}"><span class="glyphicon glyphicon-ok text-success" aria-hidden="true" *ngIf="state >= State.dockerCompose"></span> Generating docker-compose file</li>
-          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.peerUp}"><span class="glyphicon glyphicon-ok text-success" aria-hidden="true" *ngIf="state >= State.peerUp"></span> Starting peers</li>
+          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.save}" ><app-success-glyphicon></app-success-glyphicon> Submit data</li>
+          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.cryptoConfigFile}"><app-success-glyphicon></app-success-glyphicon> Generating crypto-config file</li>
+          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.cryptogen}"><app-success-glyphicon></app-success-glyphicon> Generating crypto certificates</li>
+          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.dockerCompose}"><app-success-glyphicon></app-success-glyphicon> Generating docker-compose file</li>
+          <li class="list-group-item" [ngClass]="{'strikethrough': state >= State.peerUp}"><app-success-glyphicon></app-success-glyphicon> Starting peers</li>
         </ul>
       </div>
     </div>

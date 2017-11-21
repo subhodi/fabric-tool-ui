@@ -1,3 +1,10 @@
 .strikethrough {
     text-decoration: line-through;
 }
+
+.strikethrough app-success-glyphicon {
+    visibility: visible;
+}
+app-success-glyphicon {
+    visibility: hidden;
+}
