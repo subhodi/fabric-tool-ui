@@ -52,30 +52,33 @@ export class PeerComponent implements OnInit {
   }
 
   submit() {
-    this.state = States.cryptoConfigFile;
     this.dataService.submit(this.peerForm).subscribe(data => {
       console.log(data);
+      this.state = States.cryptoConfigFile;
+      this.cryptogen();
     }, err => console.error(err));
   }
 
   cryptogen() {
-    this.state = States.cryptogen;
     this.dataService.cryptogen().subscribe(data => {
       console.log(data);
+      this.state = States.cryptogen;
+      this.dockerCompose();
     }, err => console.error(err));
   }
 
   dockerCompose() {
-    this.state = States.dockerCompose;
     this.dataService.dockerCompose().subscribe(data => {
       console.log(data);
+      this.state = States.dockerCompose;
+      this.startPeer();
     }, err => console.error(err));
   }
 
   startPeer() {
-    this.state = States.peerUp;
     this.dataService.startPeer().subscribe(data => {
       console.log(data);
+      this.state = States.peerUp;
     }, err => console.error(err));
   }
 
