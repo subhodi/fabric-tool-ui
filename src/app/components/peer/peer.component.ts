@@ -32,11 +32,10 @@ export class PeerComponent implements OnInit {
         }
       ]
     };
-
   }
 
   save(peer) {
-    this.peerForm = { 
+    this.peerForm = {
       'PeerOrgs': [
         {
           'Name': peer.name,
@@ -62,7 +61,10 @@ export class PeerComponent implements OnInit {
       console.log(data);
       this.StateStatus.cryptoConfigFile = RequestStatus.success;
       this.cryptogen();
-    }, err => console.error(err));
+    }, err => {
+      console.error(err);
+      this.StateStatus.cryptoConfigFile = RequestStatus.failure;
+    });
   }
 
   cryptogen() {
@@ -70,7 +72,10 @@ export class PeerComponent implements OnInit {
       console.log(data);
       this.StateStatus.cryptogen = RequestStatus.success;
       this.dockerCompose();
-    }, err => console.error(err));
+    }, err => {
+      console.error(err);
+      this.StateStatus.cryptogen = RequestStatus.failure;
+    });
   }
 
   dockerCompose() {
@@ -78,14 +83,20 @@ export class PeerComponent implements OnInit {
       console.log(data);
       this.StateStatus.dockerCompose = RequestStatus.success;
       this.startPeer();
-    }, err => console.error(err));
+    }, err => {
+      console.error(err);
+      this.StateStatus.dockerCompose = RequestStatus.failure;
+    });
   }
 
   startPeer() {
     this.peerService.startPeer().subscribe(data => {
       console.log(data);
       this.StateStatus.peerUp = RequestStatus.success;
-    }, err => console.error(err));
+    }, err => {
+      console.error(err);
+      this.StateStatus.peerUp = RequestStatus.failure;
+    });
   }
 
 }

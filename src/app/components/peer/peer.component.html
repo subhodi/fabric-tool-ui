@@ -48,15 +48,15 @@
       <div class="panel-heading">Task list</div>
       <div class="panel-body">
         <ul class="list-group">
-          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.submit  }">
+          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.submit != requestStatus.pending && StateStatus.submit}">
             <app-success-glyphicon status="{{StateStatus.submit}}"></app-success-glyphicon> Submit data</li>
-          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptoConfigFile}">
+          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptoConfigFile != requestStatus.pending && StateStatus.cryptoConfigFile}">
             <app-success-glyphicon status="{{StateStatus.cryptoConfigFile}}"></app-success-glyphicon> Generating crypto-config file</li>
-          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptogen }">
+          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptogen != requestStatus.pending && StateStatus.cryptogen}">
             <app-success-glyphicon status="{{StateStatus.cryptogen}}"></app-success-glyphicon> Generating crypto certificates</li>
-          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.dockerCompose }">
+          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.dockerCompose != requestStatus.pending && StateStatus.dockerCompose}">
             <app-success-glyphicon status="{{StateStatus.dockerCompose}}"></app-success-glyphicon> Generating docker-compose file</li>
-          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.peerUp}">
+          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.peerUp != requestStatus.pending && StateStatus.peerUp}">
             <app-success-glyphicon status="{{ StateStatus.peerUp}}"></app-success-glyphicon> Starting peers</li>
         </ul>
       </div>
