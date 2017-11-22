@@ -9,11 +9,9 @@ export class SuccessGlyphiconComponent implements OnInit {
   @Input() status: string;
   RequestStatus = RequestStatus;
   constructor() {
-
   }
 
   ngOnInit() {
-    console.log(this.status);
   }
 
 }

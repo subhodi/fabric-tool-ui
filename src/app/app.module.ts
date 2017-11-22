@@ -21,10 +21,13 @@ const appRoutes: Routes = [
   { path: '', component: PeerComponent },
   {
     path: 'orderer', component: OrdererComponent, children: [
-      { path: ':index', component: HelpComponent },
-      { path: ':index/edit', component: HelpComponent, outlet: 'peerSection' }
+      { path: 'data', component: HelpComponent, outlet: 'peerSection' },
+      { path: 'submit', component: HelpComponent, outlet: 'peerSection' },
+      { path: 'result', component: HelpComponent, outlet: 'peerSection' },
+      { path: 'input', component: HelpComponent, outlet: 'peerSection' }
     ]
-  }
+  },
+  { path: 'help', component: HelpComponent },
 ];
 
 @NgModule({

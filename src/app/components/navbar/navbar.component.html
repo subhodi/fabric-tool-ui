@@ -1,44 +1,43 @@
 <div class="board-inner" id="status-buttons">
     <ul class="nav nav-tabs" id="myTab">
         <div class="liner"></div>
-                    
+
         <!-- circular user icon -->
         <li>
-            <a routerLink="/personal" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" data-toggle="tab" title="personal">
+            <a [routerLink]="['/orderer',{outlets:{peerSection:'input'}}]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                title="personal">
                 <span class="round-tabs one">
                     <i class="glyphicon glyphicon-user"></i>
                 </span>
             </a>
         </li>
- 
+
         <!-- circular tasks icon -->
-         <li>
-            <a   [routerLink]="['/orderer',{outlets:{peerSection:':index/edit'}}]" routerLinkActive="active" data-toggle="tab" title="work">
+        <li>
+            <a [routerLink]="['/orderer',{outlets:{peerSection:'data'}}]" routerLinkActive="active" title="work">
                 <span class="round-tabs two">
                     <i class="glyphicon glyphicon-tasks"></i>
-                </span> 
+                </span>
             </a>
         </li>
- 
         <!-- circular home icon -->
         <li>
-            <a routerLink="/address" routerLinkActive="active" data-toggle="tab" title="address">    
+            <a [routerLink]="['/orderer',{outlets:{peerSection:'submit'}}]" routerLinkActive="active" title="address">
                 <span class="round-tabs three">
                     <i class="glyphicon glyphicon-home"></i>
                 </span>
             </a>
         </li>
- 
+
         <!-- circular ok icon -->
         <li>
-            <a routerLink="/result" routerLinkActive="active" data-toggle="tab" title="completed">
+            <a [routerLink]="['/orderer',{outlets:{peerSection:'result'}}]" routerLinkActive="active" title="completed">
                 <span class="round-tabs four">
                     <i class="glyphicon glyphicon-ok"></i>
                 </span>
             </a>
         </li>
-                
+
     </ul>
     <div class="clearfix"></div>
 </div>
- 
