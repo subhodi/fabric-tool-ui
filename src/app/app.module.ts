@@ -15,7 +15,6 @@ import { OrdererComponent } from './components/orderer/orderer.component';
 import { PeerComponent } from './components/peer/peer.component';
 import { HelpComponent } from './components/help/help.component';
 import { TaskStatusComponent } from './components/helper/task-status/task-status.component';
-import { OrdererWizardComponent } from './components/orderer-wizard/orderer-wizard.component';
 import { CryptogenFormComponent } from './components/orderer-wizard/cryptogen-form/cryptogen-form.component';
 import { OrdererServiceFormComponent } from './components/orderer-wizard/orderer-service-form/orderer-service-form.component';
 import { OrdererOutputComponent } from './components/orderer-wizard/orderer-output/orderer-output.component';
@@ -40,7 +39,6 @@ const appRoutes: Routes = [
     PeerComponent,
     HelpComponent,
     TaskStatusComponent,
-    OrdererWizardComponent,
     CryptogenFormComponent,
     OrdererServiceFormComponent,
     OrdererOutputComponent,
