@@ -2,6 +2,9 @@
     text-decoration: line-through;
 }
 
+.panel {
+    margin: 5px;
+}
 /* .strikethrough app-success-glyphicon {
     visibility: visible;
 }
