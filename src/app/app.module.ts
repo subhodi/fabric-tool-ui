@@ -16,15 +16,18 @@ import { PeerComponent } from './components/peer/peer.component';
 import { HelpComponent } from './components/help/help.component';
 import { TaskStatusComponent } from './components/helper/task-status/task-status.component';
 import { OrdererWizardComponent } from './components/orderer-wizard/orderer-wizard.component';
+import { CryptogenFormComponent } from './components/orderer-wizard/cryptogen-form/cryptogen-form.component';
+import { OrdererServiceFormComponent } from './components/orderer-wizard/orderer-service-form/orderer-service-form.component';
+import { OrdererOutputComponent } from './components/orderer-wizard/orderer-output/orderer-output.component';
 
 const appRoutes: Routes = [
   { path: '', component: PeerComponent },
   {
     path: 'orderer', component: OrdererComponent, children: [
-      { path: 'data', component: HelpComponent, outlet: 'peerSection' },
-      { path: 'submit', component: HelpComponent, outlet: 'peerSection' },
-      { path: 'result', component: HelpComponent, outlet: 'peerSection' },
-      { path: 'input', component: HelpComponent, outlet: 'peerSection' }
+      { path: '', component: CryptogenFormComponent, outlet: 'peerSection' },
+      { path: 'cryptogen', component: CryptogenFormComponent, outlet: 'peerSection' },
+      { path: 'orderer-service', component: OrdererServiceFormComponent, outlet: 'peerSection' },
+      { path: 'orderer-output', component: OrdererOutputComponent, outlet: 'peerSection' }
     ]
   },
   { path: 'help', component: HelpComponent },
@@ -38,6 +41,9 @@ const appRoutes: Routes = [
     HelpComponent,
     TaskStatusComponent,
     OrdererWizardComponent,
+    CryptogenFormComponent,
+    OrdererServiceFormComponent,
+    OrdererOutputComponent,
   ],
   imports: [
     BrowserModule,
