@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-success-glyphicon',
-  templateUrl: './success-glyphicon.component.html',
-  styleUrls: ['./success-glyphicon.component.css']
+  selector: 'app-task-status',
+  templateUrl: './task-status.component.html',
+  styleUrls: ['./task-status.component.css']
 })
-export class SuccessGlyphiconComponent implements OnInit {
+export class TaskStatusComponent implements OnInit {
+
   @Input() status: string;
   RequestStatus = RequestStatus;
   constructor() {
@@ -20,4 +21,3 @@ enum RequestStatus {
   success,
   failure
 }
-

@@ -14,8 +14,8 @@ import { AppComponent } from './app.component';
 import { OrdererComponent } from './components/orderer/orderer.component';
 import { PeerComponent } from './components/peer/peer.component';
 import { HelpComponent } from './components/help/help.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { SuccessGlyphiconComponent } from './components/helper/success-glyphicon/success-glyphicon.component';
+import { TaskStatusComponent } from './components/helper/task-status/task-status.component';
+import { OrdererWizardComponent } from './components/orderer-wizard/orderer-wizard.component';
 
 const appRoutes: Routes = [
   { path: '', component: PeerComponent },
@@ -36,8 +36,8 @@ const appRoutes: Routes = [
     OrdererComponent,
     PeerComponent,
     HelpComponent,
-    NavbarComponent,
-    SuccessGlyphiconComponent,
+    TaskStatusComponent,
+    OrdererWizardComponent,
   ],
   imports: [
     BrowserModule,

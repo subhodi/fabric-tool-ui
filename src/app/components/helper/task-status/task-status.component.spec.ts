@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuccessGlyphiconComponent } from './success-glyphicon.component';
+import { TaskStatusComponent } from './task-status.component';
 
-describe('SuccessGlyphiconComponent', () => {
-  let component: SuccessGlyphiconComponent;
-  let fixture: ComponentFixture<SuccessGlyphiconComponent>;
+describe('TaskStatusComponent', () => {
+  let component: TaskStatusComponent;
+  let fixture: ComponentFixture<TaskStatusComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SuccessGlyphiconComponent ]
+      declarations: [ TaskStatusComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SuccessGlyphiconComponent);
+    fixture = TestBed.createComponent(TaskStatusComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
