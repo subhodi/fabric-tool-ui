@@ -6,70 +6,76 @@
       </div>
       <div class="container-fluid">
         <div class="panel-body panel-success">
-          <form name="peerForm">
+          <form name="peerForm" class="form-horizontal">
             <div class="form-group has-feedback">
-              <label class="control-label" for="name">Org Name:</label>
-              <input id="name" name="name" type="text" [(ngModel)]="peer.name" name="peer.name" class="form-control" required />
-            </div>
-            <div class="form-group has-feedback">
-              <label class="control-label" for="domain">Domain Name:</label>
-              <input id="domain" name="domain" type="text" [(ngModel)]="peer.domain" name="peer.domain" class="form-control" required />
-            </div>
-            <div class="form-group has-feedback">
-              <label class="control-label" for="peerCount">Peer count:</label>
-              <input id="peerCount" name="peerCount" type="number" min="0" max="150" [(ngModel)]="peer.peerCount" name="peer.peerCount"
-                class="form-control" required />
-            </div>
-            <div class="form-group has-feedback">
-              <label class="control-label" for="userCount">User count:</label>
-              <input id="userCount" name="userCount" type="number" min="0" max="150" [(ngModel)]="peer.userCount" name="peer.userCount"
-                class="form-control" required />
-            </div>
-
-            <button id="save-btn" class="btn btn-success" (click)="save(peer)">Preview
-              <i class="fa fa-eye" aria-hidden="true"></i>
-            </button>
-            <button id="save-btn" class="btn btn-success" (click)="submit()">Submit
-              <i class="fa fa-upload" aria-hidden="true"></i>
-            </button>
-
-            <div class="form-group">
-              <div class="panel-body">
-                <pre id="peerForm">Peer = {{peerForm| json}}</pre>
+              <label class="control-label col-sm-2" for="name">Org Name:</label>
+              <div class="col-sm-10">
+                <input id="name" name="name" type="text" [(ngModel)]="peer.name" name="peer.name" class="form-control" required />
               </div>
             </div>
+            <div class="form-group has-feedback">
+              <label class="control-label col-sm-2" for="domain">Domain Name:</label>
+              <div class="col-sm-10">
+                <input id="domain" name="domain" type="text" [(ngModel)]="peer.domain" name="peer.domain" class="form-control" required />
+              </div>
+            </div>
+            <div class="form-group has-feedback">
+              <label class="control-label col-sm-2" for="peerCount">Peer count:</label>
+              <div class="col-sm-10">
+                <input id="peerCount" name="peerCount" type="number" min="0" max="150" [(ngModel)]="peer.peerCount" name="peer.peerCount" class="form-control" required />
+                  </div>
+              </div>
+              <div class="form-group has-feedback">
+                <label class="control-label col-sm-2" for="userCount">User count:</label>
+                <div class="col-sm-10">
+                  <input id="userCount" name="userCount" type="number" min="0" max="150" [(ngModel)]="peer.userCount" name="peer.userCount"
+                    class="form-control" required />
+                </div>
+              </div>
+              <button id="save-btn" class="btn btn-success" (click)="save(peer)">Preview
+                <i class="fa fa-eye" aria-hidden="true"></i>
+              </button>
+              <button id="save-btn" class="btn btn-success" (click)="submit()">Submit
+                <i class="fa fa-upload" aria-hidden="true"></i>
+              </button>
+
+              <div class="form-group">
+                <div class="panel-body">
+                  <pre id="peerForm">Peer = {{peerForm| json}}</pre>
+                </div>
+              </div>
           </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel" [ngClass]="apiResponse.status == true ? 'panel-success' : 'panel-danger'">
+        <div class="panel-heading">Task list</div>
+        <div class="panel-body">
+          <ul class="list-group">
+            <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.submit != requestStatus.pending && StateStatus.submit}">
+              <app-task-status status="{{StateStatus.submit}}"></app-task-status> Submit data</li>
+            <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptoConfigFile != requestStatus.pending && StateStatus.cryptoConfigFile}">
+              <app-task-status status="{{StateStatus.cryptoConfigFile}}"></app-task-status> Generating crypto-config file</li>
+            <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptogen != requestStatus.pending && StateStatus.cryptogen}">
+              <app-task-status status="{{StateStatus.cryptogen}}"></app-task-status> Generating crypto certificates</li>
+            <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.dockerCompose != requestStatus.pending && StateStatus.dockerCompose}">
+              <app-task-status status="{{StateStatus.dockerCompose}}"></app-task-status> Generating docker-compose file</li>
+            <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.peerUp != requestStatus.pending && StateStatus.peerUp}">
+              <app-task-status status="{{ StateStatus.peerUp}}"></app-task-status> Starting peers</li>
+          </ul>
+        </div>
+        <div class="panel-footer">
+          <p class="text-left">{{apiResponse.message}} {{ apiResponse.path}}</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="panel" [ngClass]="apiResponse.status == true ? 'panel-success' : 'panel-danger'">
-      <div class="panel-heading">Task list</div>
-      <div class="panel-body">
-        <ul class="list-group">
-          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.submit != requestStatus.pending && StateStatus.submit}">
-            <app-task-status status="{{StateStatus.submit}}"></app-task-status> Submit data</li>
-          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptoConfigFile != requestStatus.pending && StateStatus.cryptoConfigFile}">
-            <app-task-status status="{{StateStatus.cryptoConfigFile}}"></app-task-status> Generating crypto-config file</li>
-          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptogen != requestStatus.pending && StateStatus.cryptogen}">
-            <app-task-status status="{{StateStatus.cryptogen}}"></app-task-status> Generating crypto certificates</li>
-          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.dockerCompose != requestStatus.pending && StateStatus.dockerCompose}">
-            <app-task-status status="{{StateStatus.dockerCompose}}"></app-task-status> Generating docker-compose file</li>
-          <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.peerUp != requestStatus.pending && StateStatus.peerUp}">
-            <app-task-status status="{{ StateStatus.peerUp}}"></app-task-status> Starting peers</li>
-        </ul>
-      </div>
-      <div class="panel-footer">
-        <p class="text-left">{{apiResponse.message}} {{ apiResponse.path}}</p>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
-<!-- <form-wizard>
+  <!-- <form-wizard>
         <wizard-step [title]="'Step1'"  (onNext)="onStep1Next($event)">
           <h1>Step1</h1>
         </wizard-step>
