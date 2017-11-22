@@ -55,6 +55,7 @@ export class PeerComponent implements OnInit {
     this.StateStatus.cryptogen = RequestStatus.pending;
     this.StateStatus.dockerCompose = RequestStatus.pending;
     this.StateStatus.peerUp = RequestStatus.pending;
+    this.apiResponse = { 'status': true, 'message': 'Hit submit to start', path: null };
   }
 
   submit() {
