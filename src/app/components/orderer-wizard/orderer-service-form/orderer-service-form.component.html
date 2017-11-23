@@ -10,8 +10,12 @@
                         <div class="form-group has-feedback">
                             <label class="control-label col-sm-2" for="name">OrdererType:</label>
                             <div class="col-sm-10">
-                                <input id="ordererType" name="ordererType" type="text" [(ngModel)]="configtx.ordererType" name="configtx.ordererType" class="form-control"
-                                    required />
+                                <select class="form-control" id="ordererType" name="ordererType" [(ngModel)]="configtx.ordererType" name="configtx.ordererType" required>
+                                    <option>solo</option>
+                                    <option>kafka</option>
+                                </select>
+                                <!-- <input id="ordererType" name="ordererType" type="text" [(ngModel)]="configtx.ordererType" name="configtx.ordererType" class="form-control"
+                                    required /> -->
                             </div>
                         </div>
                         <div class="form-group has-feedback">
@@ -44,10 +48,10 @@
                             </div>
                         </div>
 
-                        <button id="save-btn" class="btn btn-success" (click)="save(configtx)">Preview
+                        <button id="save-btn" class="btn btn-primary" (click)="save(configtx)">Preview
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </button>
-                        <button id="save-btn" class="btn btn-success" (click)="configTx()">Submit
+                        <button id="save-btn" class="btn btn-primary" (click)="configTx()">Submit
                             <i class="fa fa-upload" aria-hidden="true"></i>
                         </button>
                         <div class="form-group">

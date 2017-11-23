@@ -1,0 +1,16 @@
+.peer-panel {
+    border-color: #009688;
+}
+
+.peer-panel > .panel-heading {
+    background-color: #009688;
+    border-color: #009688;
+    color:white;
+}
+
+.peer-button {
+    background-color: #009688;
+    border-color: #009688;
+    color: white;
+}
+

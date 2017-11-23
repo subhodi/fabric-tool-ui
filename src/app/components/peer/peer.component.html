@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-8">
-    <div class="panel panel-success">
+    <div class="panel panel-success peer-panel">
       <div class="panel-heading">
         <h3 class="panel-title">Peer</h3>
       </div>
@@ -32,10 +32,10 @@
                     class="form-control" required />
                 </div>
               </div>
-              <button id="save-btn" class="btn btn-success" (click)="save(peer)">Preview
+              <button id="save-btn" class="btn btn-success peer-button" (click)="save(peer)">Preview
                 <i class="fa fa-eye" aria-hidden="true"></i>
               </button>
-              <button id="save-btn" class="btn btn-success" (click)="submit()">Submit
+              <button id="save-btn" class="btn btn-success peer-button" (click)="submit()">Submit
                 <i class="fa fa-upload" aria-hidden="true"></i>
               </button>
 
@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="panel" [ngClass]="apiResponse.status == true ? 'panel-success' : 'panel-danger'">
+      <div class="panel" [ngClass]="apiResponse.status == true ? 'panel-success peer-panel' : 'panel-danger'">
         <div class="panel-heading">Task list</div>
         <div class="panel-body">
           <ul class="list-group">
