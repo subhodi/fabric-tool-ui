@@ -24,28 +24,30 @@
                         <div class="form-group has-feedback">
                             <label class="control-label col-sm-2" for="batchTimeout">BatchTimeout:</label>
                             <div class="col-sm-10">
-                                <input id="batchTimeout" name="batchTimeout" type="text" [(ngModel)]="configtx.batchTimeout" name="configtx.batchTimeout" class="form-control" required
-                                />
+                                <input id="batchTimeout" name="batchTimeout" type="text" [(ngModel)]="configtx.batchTimeout" name="configtx.batchTimeout"
+                                    class="form-control" required />
                             </div>
                         </div>
-                       <div class="form-group has-feedback">
+                        <div class="form-group has-feedback">
                             <label class="control-label col-sm-2" for="absoluteMaxBytes">AbsoluteMaxBytes:</label>
                             <div class="col-sm-10">
-                                <input id="absoluteMaxBytes" name="absoluteMaxBytes" type="text" [(ngModel)]="configtx.absoluteMaxBytes" name="configtx.absoluteMaxBytes" class="form-control" required />
+                                <input id="absoluteMaxBytes" name="absoluteMaxBytes" type="text" [(ngModel)]="configtx.absoluteMaxBytes" name="configtx.absoluteMaxBytes"
+                                    class="form-control" required />
                             </div>
                         </div>
 
-                       <div class="form-group has-feedback">
+                        <div class="form-group has-feedback">
                             <label class="control-label col-sm-2" for="name">preferredMaxBytes:</label>
                             <div class="col-sm-10">
-                                <input id="preferredMaxBytes" name="preferredMaxBytes" type="text" [(ngModel)]="configtx.preferredMaxBytes" name="configtx.preferredMaxBytes" class="form-control" required />
+                                <input id="preferredMaxBytes" name="preferredMaxBytes" type="text" [(ngModel)]="configtx.preferredMaxBytes" name="configtx.preferredMaxBytes"
+                                    class="form-control" required />
                             </div>
                         </div>
 
                         <button id="save-btn" class="btn btn-success" (click)="save(configtx)">Preview
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </button>
-                        <button id="save-btn" class="btn btn-success" (click)="submit()">Submit
+                        <button id="save-btn" class="btn btn-success" (click)="configTx()">Submit
                             <i class="fa fa-upload" aria-hidden="true"></i>
                         </button>
                         <div class="form-group">
@@ -66,10 +68,16 @@
                 <ul class="list-group">
                     <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.submit != requestStatus.pending && StateStatus.submit}">
                         <app-task-status status="{{StateStatus.submit}}"></app-task-status> Submit data</li>
-                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptoConfigFile != requestStatus.pending && StateStatus.cryptoConfigFile}">
-                        <app-task-status status="{{StateStatus.cryptoConfigFile}}"></app-task-status> Generating crypto-config file</li>
-                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptogen != requestStatus.pending && StateStatus.cryptogen}">
-                        <app-task-status status="{{StateStatus.cryptogen}}"></app-task-status> Generating crypto certificates</li>
+                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.configTx != requestStatus.pending && StateStatus.configTx}">
+                        <app-task-status status="{{StateStatus.configTx}}"></app-task-status> ConfigTx</li>
+                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.genesisBlock != requestStatus.pending && StateStatus.genesisBlock}">
+                        <app-task-status status="{{StateStatus.genesisBlock}}"></app-task-status>Genesis block</li>
+                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.channelTx != requestStatus.pending && StateStatus.channelTx}">
+                        <app-task-status status="{{StateStatus.channelTx}}"></app-task-status> Channel TX</li>
+                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.dockerCompose != requestStatus.pending && StateStatus.dockerCompose}">
+                        <app-task-status status="{{StateStatus.dockerCompose}}"></app-task-status> Docker compose file</li>
+                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.peerUp != requestStatus.pending && StateStatus.peerUp}">
+                        <app-task-status status="{{StateStatus.peerUp}}"></app-task-status>Starting peer</li>
                 </ul>
             </div>
             <div class="panel-footer">
