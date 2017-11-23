@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { OrdererService } from '../../../services/orderer.service';
 
@@ -16,7 +17,7 @@ export class OrdererServiceFormComponent implements OnInit {
   apiResponse: APIResponse;
   requestStatus = RequestStatus;
   orderer: Orderer;
-  constructor(private ordererService: OrdererService) {
+  constructor(private ordererService: OrdererService, private router: Router) {
     this.orderer = ordererService.getOrderer();
   }
 
@@ -258,6 +259,7 @@ export class OrdererServiceFormComponent implements OnInit {
       console.log(data);
       this.StateStatus.peerUp = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
+      this.router.navigate(['/orderer', { outlets: { ordererSection: 'orderer-output' } }]);
     }, err => {
       console.error(err);
       this.StateStatus.peerUp = RequestStatus.failure;

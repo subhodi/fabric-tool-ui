@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { OrdererService } from '../../../services/orderer.service';
 
@@ -17,8 +17,7 @@ export class CryptogenFormComponent implements OnInit {
   StateStatus: any = {};
   apiResponse: APIResponse;
   requestStatus = RequestStatus;
-  constructor(private ordererService: OrdererService, private route: ActivatedRoute,
-    private router: Router) { }
+  constructor(private ordererService: OrdererService, private router: Router) { }
 
   ngOnInit() {
     this.orderer = { name: 'Orderer', domain: 'example.com', host: 'orderer' };
