@@ -1,16 +1,17 @@
+
 .peer-panel {
-    border-color: #009688;
+    border-color: var(--peer-theme-color);
 }
 
 .peer-panel > .panel-heading {
-    background-color: #009688;
-    border-color: #009688;
+    background-color: var(--peer-theme-color);
+    border-color:var(--peer-theme-color);
     color:white;
 }
 
 .peer-button {
-    background-color: #009688;
-    border-color: #009688;
+    background-color: var(--peer-theme-color);
+    border-color: var(--peer-theme-color);
     color: white;
 }
 

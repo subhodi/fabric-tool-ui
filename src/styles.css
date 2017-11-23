@@ -11,3 +11,8 @@
 .panel {
     margin: 5px;
 }
+
+:root {
+      --peer-theme-color:#009688;
+      --orderer-theme-color:#01579B;
+  }
