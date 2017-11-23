@@ -23,11 +23,11 @@ const appRoutes: Routes = [
   { path: '', component: PeerComponent },
   {
     path: 'orderer', component: OrdererComponent, children: [
-      { path: '', component: CryptogenFormComponent, outlet: 'peerSection' },
-      { path: 'cryptogen', component: CryptogenFormComponent, outlet: 'peerSection' },
-      { path: 'orderer-service', component: OrdererServiceFormComponent, outlet: 'peerSection' },
-      { path: 'orderer-output', component: OrdererOutputComponent, outlet: 'peerSection' },
-      { path: 'orderer-sample', component: OrdererOutputComponent, outlet: 'peerSection' }
+      { path: '', component: CryptogenFormComponent, outlet: 'ordererSection' },
+      { path: 'cryptogen', component: CryptogenFormComponent, outlet: 'ordererSection' },
+      { path: 'orderer-service', component: OrdererServiceFormComponent, outlet: 'ordererSection' },
+      { path: 'orderer-output', component: OrdererOutputComponent, outlet: 'ordererSection' },
+      { path: 'orderer-sample', component: OrdererOutputComponent, outlet: 'ordererSection' }
     ]
   },
   { path: 'help', component: HelpComponent },

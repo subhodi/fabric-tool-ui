@@ -5,7 +5,7 @@
                 <ul class="nav nav-tabs" id="myTab">
                     <div class="liner"></div>
                     <li>
-                        <a [routerLink]="['/orderer',{outlets:{peerSection:'cryptogen'}}]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                        <a [routerLink]="['/orderer',{outlets:{ordererSection:'cryptogen'}}]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                             title="Cryptogen" class="active">
                             <span class="round-tabs one">
                                 <i class="fa fa-lock" aria-hidden="true"></i>
@@ -14,7 +14,7 @@
                     </li>
 
                     <li>
-                        <a [routerLink]="['/orderer',{outlets:{peerSection:'orderer-service'}}]" routerLinkActive="active" title="work">
+                        <a [routerLink]="['/orderer',{outlets:{ordererSection:'orderer-service'}}]" routerLinkActive="active" title="work">
                             <span class="round-tabs two">
                                 <i class="fa fa-server"></i>
                             </span>
@@ -22,7 +22,7 @@
                     </li>
 
                     <li>
-                        <a [routerLink]="['/orderer',{outlets:{peerSection:'orderer-sample'}}]" routerLinkActive="active" title="completed">
+                        <a [routerLink]="['/orderer',{outlets:{ordererSection:'orderer-sample'}}]" routerLinkActive="active" title="completed">
                             <span class="round-tabs four">
                                 <i class="glyphicon glyphicon-ok"></i>
                             </span>
@@ -30,7 +30,7 @@
                     </li>
 
                     <li>
-                            <a [routerLink]="['/orderer',{outlets:{peerSection:'orderer-output'}}]" routerLinkActive="active" title="completed">
+                            <a [routerLink]="['/orderer',{outlets:{ordererSection:'orderer-output'}}]" routerLinkActive="active" title="completed">
                                 <span class="round-tabs three">
                                     <i class="fa fa-file"></i>
                                 </span>
@@ -42,4 +42,4 @@
         </div>
     </div>
 </div>
-<router-outlet name="peerSection"></router-outlet>
+<router-outlet name="ordererSection"></router-outlet>
