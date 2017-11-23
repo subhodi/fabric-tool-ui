@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PeerService } from '../../services/peer.service';
+import { RequestStatus, APIResponse } from '../../model/model.interface';
 
 @Component({
   selector: 'app-peer',
@@ -110,15 +111,4 @@ export class PeerComponent implements OnInit {
 
 }
 
-enum RequestStatus {
-  pending = 1,
-  success,
-  failure
-}
-
-interface APIResponse {
-  status: boolean;
-  message: string;
-  path: string;
-}
 

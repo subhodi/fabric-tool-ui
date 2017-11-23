@@ -16,18 +16,26 @@
                     <li>
                         <a [routerLink]="['/orderer',{outlets:{peerSection:'orderer-service'}}]" routerLinkActive="active" title="work">
                             <span class="round-tabs two">
-                                <i class="glyphicon glyphicon-tasks"></i>
+                                <i class="fa fa-server"></i>
                             </span>
                         </a>
                     </li>
 
                     <li>
-                        <a [routerLink]="['/orderer',{outlets:{peerSection:'orderer-output'}}]" routerLinkActive="active" title="completed">
+                        <a [routerLink]="['/orderer',{outlets:{peerSection:'orderer-sample'}}]" routerLinkActive="active" title="completed">
                             <span class="round-tabs four">
                                 <i class="glyphicon glyphicon-ok"></i>
                             </span>
                         </a>
                     </li>
+
+                    <li>
+                            <a [routerLink]="['/orderer',{outlets:{peerSection:'orderer-output'}}]" routerLinkActive="active" title="completed">
+                                <span class="round-tabs three">
+                                    <i class="fa fa-file"></i>
+                                </span>
+                            </a>
+                        </li>
                 </ul>
                 <div class="clearfix"></div>
             </div>

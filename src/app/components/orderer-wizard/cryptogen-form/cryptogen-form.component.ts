@@ -1,47 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 
+import { RequestStatus, APIResponse } from '../../../model/model.interface';
+
 @Component({
   selector: 'app-cryptogen-form',
   templateUrl: './cryptogen-form.component.html',
   styleUrls: ['./cryptogen-form.component.css']
 })
+
 export class CryptogenFormComponent implements OnInit {
-  peerForm: Object;
-  peer: Object;
-  requestStatus = RequestStatus;
+  cryptogenForm: Object;
+  cryptogen: Object;
+  requestStatus=   RequestStatus;
+  rs: RequestStatus;
   StateStatus: any = {};
   apiResponse: APIResponse;
   constructor() { }
 
   ngOnInit() {
-    this.peer = { name: 'Org1', domain: 'org1.example.com', peerCount: 2, userCount: 1 };
-    this.peerForm = {
-      'PeerOrgs': [
+    this.cryptogen = { name: 'Orderer', domain: 'example.com', host: 'orderer' };
+    this.cryptogenForm = {
+      'OrdererOrgs': [
         {
-          'Name': 'Org1',
-          'Domain': 'org1.example.com',
-          'Template': {
-            'Count': 2
-          },
-          'Users': {
-            'Count': 1
-          }
+          'Name': 'Orderer',
+          'Domain': 'example.com',
+          'Specs': [
+            {
+              'Hostname': 'orderer'
+            }
+          ]
         }
       ]
     };
     this.apiResponse = { 'status': true, 'message': 'Hit submit to start', path: null };
+    this.rs = RequestStatus.failure;
+    console.log(this.rs);
+
   }
 
 }
 
-enum RequestStatus {
-  pending = 1,
-  success,
-  failure
-}
-
-interface APIResponse {
-  status: boolean;
-  message: string;
-  path: string;
-}

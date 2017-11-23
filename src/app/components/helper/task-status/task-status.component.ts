@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { RequestStatus } from '../../../model/model.interface';
+
 @Component({
   selector: 'app-task-status',
   templateUrl: './task-status.component.html',
@@ -15,9 +17,4 @@ export class TaskStatusComponent implements OnInit {
   ngOnInit() {
   }
 
-}
-enum RequestStatus {
-  pending = 1,
-  success,
-  failure
 }

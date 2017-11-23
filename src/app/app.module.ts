@@ -26,7 +26,8 @@ const appRoutes: Routes = [
       { path: '', component: CryptogenFormComponent, outlet: 'peerSection' },
       { path: 'cryptogen', component: CryptogenFormComponent, outlet: 'peerSection' },
       { path: 'orderer-service', component: OrdererServiceFormComponent, outlet: 'peerSection' },
-      { path: 'orderer-output', component: OrdererOutputComponent, outlet: 'peerSection' }
+      { path: 'orderer-output', component: OrdererOutputComponent, outlet: 'peerSection' },
+      { path: 'orderer-sample', component: OrdererOutputComponent, outlet: 'peerSection' }
     ]
   },
   { path: 'help', component: HelpComponent },
