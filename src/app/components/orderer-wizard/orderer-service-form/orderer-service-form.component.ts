@@ -104,19 +104,79 @@ export class OrdererServiceFormComponent implements OnInit {
     this.apiResponse = { 'status': true, 'message': 'Hit submit to start', path: null };
   }
 
-  save(orderer) {
+  save(configtx) {
     this.configtxForm = {
-      'OrdererOrgs': [
-        {
-          'Name': orderer.name,
-          'Domain': orderer.domain,
-          'Specs': [
-            {
-              'Hostname': orderer.host
-            }
+      'Orderer': {
+        'OrdererType': configtx.ordererType,
+        'Addresses': [
+          this.orderer.host + '.' + this.orderer.domain + ':7050'
+        ],
+        'BatchTimeout': configtx.batchTimeout,
+        'BatchSize': {
+          'MaxMessageCount': configtx.maxMessageCount,
+          'AbsoluteMaxBytes': configtx.absoluteMaxBytes,
+          'PreferredMaxBytes': configtx.preferredMaxBytes
+        },
+        'Kafka': {
+          'Brokers': [
+            '127.0.0.1:9092'
           ]
+        },
+        'Organizations': null
+      },
+      'Application': {
+        'Organizations': null
+      },
+      'Organizations': [
+        {
+          'Name': this.orderer.org + 'MSP',
+          'ID': this.orderer.org + 'MSP',
+          'MSPDir': 'crypto-config/ordererOrganizations/' + this.orderer.domain + '/msp'
         }
-      ]
+      ],
+      'Profiles': {
+        'TwoOrgsOrdererGenesis': {
+          'Orderer': {
+            'OrdererType': 'solo',
+            'Addresses': [
+              this.orderer.host + '.' + this.orderer.domain + ':7050'
+            ],
+            'BatchTimeout': '2s',
+            'BatchSize': {
+              'MaxMessageCount': 10,
+              'AbsoluteMaxBytes': '98 MB',
+              'PreferredMaxBytes': '512 KB'
+            },
+            'Kafka': {
+              'Brokers': [
+                '127.0.0.1:9092'
+              ]
+            },
+            'Organizations': [
+              {
+                'Name': this.orderer.org + 'MSP',
+                'ID': this.orderer.org + 'MSP',
+                'MSPDir': 'crypto-config/ordererOrganizations/' + this.orderer.domain + '/msp'
+              }
+            ]
+          },
+          'Consortiums': {
+            'SampleConsortium': {
+              'Organizations': [
+
+              ]
+            }
+          }
+        },
+        'TwoOrgsChannel': {
+          'Consortium': 'SampleConsortium',
+          'Application': {
+            'Organizations': [
+
+            ]
+          }
+        }
+      }
     };
     this.StateStatus.submit = RequestStatus.success;
     this.StateStatus.cryptoConfigFile = RequestStatus.pending;
