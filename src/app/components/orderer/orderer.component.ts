@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orderer',
@@ -8,11 +7,10 @@ import { Router } from '@angular/router';
 })
 export class OrdererComponent implements OnInit {
   title = 'Multi-Step Wizard';
-  router: Router;
-  constructor(private routers: Router) { }
+  constructor() { }
 
   ngOnInit() {
-    // this.router.navigate(['/orderer', { outlets: { ordererSection: 'cryptogen' } }]);
+
   }
 
 }
