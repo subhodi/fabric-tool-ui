@@ -9,13 +9,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="pie-chart">
-                                <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [colors]="pieChartColor"></canvas>
+                                <canvas baseChart [data]="loadData" [labels]="loadLabels" [chartType]="loadType" [colors]="loadColor"></canvas>
                             </div>
                             <div class="text-center">CPU</div>
                         </div>
                         <div class="col-md-6">
                             <div class="pie-chart">
-                                <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [colors]="pieChartColor"></canvas>
+                                <canvas baseChart [data]="memoryData" [labels]="memoryLabels" [chartType]="memoryType" [colors]="memoryColor"></canvas>
                             </div>
                             <div class="text-center">MEMORY</div>
                         </div>

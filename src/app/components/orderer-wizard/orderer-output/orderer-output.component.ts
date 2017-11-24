@@ -5,10 +5,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orderer-output.component.css']
 })
 export class OrdererOutputComponent implements OnInit {
-  public pieChartLabels: string[] = ['Used', 'Free'];
-  public pieChartData: number[] = [70, 30];
-  public pieChartColor: any[] = [{ backgroundColor: ['#009688', '#546E7A'] }];
-  public pieChartType = 'pie';
+  public loadLabels: string[] = ['Used', 'Free'];
+  public loadData: number[] = [70, 30];
+  public loadColor: any[] = [{ backgroundColor: ['#009688', '#546E7A'] }];
+  public loadType = 'pie';
+
+  public memoryLabels: string[] = ['Used', 'Free'];
+  public memoryData: number[] = [60, 40];
+  public memoryColor: any[] = [{ backgroundColor: ['#009688', '#546E7A'] }];
+  public memoryType = 'pie';
+
   constructor() {
   }
 
