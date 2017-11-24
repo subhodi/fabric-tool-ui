@@ -8,6 +8,10 @@ export class OrdererService {
   orderer: Orderer;
   constructor(private http: Http) { }
 
+  getSystemStats() {
+    return this.http.get(environment.apiUrl + '/network/stats');
+  }
+
   getOrderer() {
     return this.orderer ? this.orderer : JSON.parse(localStorage.getItem('orderer'));
   }

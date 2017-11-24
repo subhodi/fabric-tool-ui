@@ -29,10 +29,12 @@
             <div class="panel-heading">Overview</div>
             <div class="panel-body">
                 <ul class="list-group">
-                    <li class="list-group-item">Total peers:5</li>
-                    <li class="list-group-item">Active peers:3</li>
-                    <li class="list-group-item"> CPU :90% </li>
-                    <li class="list-group-item"> Memory :70%</li>
+                    <li class="list-group-item">Total Mem: <strong> {{totalMemory}}</strong></li>
+                    <li class="list-group-item">Available Mem:<strong> {{availableMemory}}</strong></li>
+                    <li class="list-group-item"> CPU Average load / 1min:<strong> {{load[0]}}</strong></li>
+                    <li class="list-group-item"> CPU Average load / 5 min:<strong> {{load[1]}}</strong></li>
+                    <li class="list-group-item"> CPU Average load /15 min:<strong> {{load[2]}}</strong></li>
+                    
                 </ul>
             </div>
             <div class="panel-footer">
