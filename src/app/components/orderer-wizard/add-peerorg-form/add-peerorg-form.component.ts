@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-orderer-output',
-  templateUrl: './orderer-output.component.html',
-  styleUrls: ['./orderer-output.component.css']
+  selector: 'app-add-peerorg-form',
+  templateUrl: './add-peerorg-form.component.html',
+  styleUrls: ['./add-peerorg-form.component.css']
 })
-export class OrdererOutputComponent implements OnInit {
+export class AddPeerorgFormComponent implements OnInit {
   peers: Peer[] = [];
   a: any;
-  constructor() {
-
-  }
+  constructor() { }
 
   ngOnInit() {
     this.peers.push({ containerId: '5d8586f00eae', name: 'ca_peerOrg1', created: '17 hours ago', status: 'Up 17 hours', action: 'remove' });
@@ -29,3 +27,4 @@ interface Peer {
   status: string;
   action: string;
 }
+

@@ -18,6 +18,7 @@ import { TaskStatusComponent } from './components/helper/task-status/task-status
 import { CryptogenFormComponent } from './components/orderer-wizard/cryptogen-form/cryptogen-form.component';
 import { OrdererServiceFormComponent } from './components/orderer-wizard/orderer-service-form/orderer-service-form.component';
 import { OrdererOutputComponent } from './components/orderer-wizard/orderer-output/orderer-output.component';
+import { AddPeerorgFormComponent } from './components/orderer-wizard/add-peerorg-form/add-peerorg-form.component';
 
 const appRoutes: Routes = [
   { path: '', component: PeerComponent },
@@ -26,8 +27,8 @@ const appRoutes: Routes = [
       { path: '', redirectTo: '/orderer/(ordererSection:cryptogen)', pathMatch: 'full' },
       { path: 'cryptogen', component: CryptogenFormComponent, outlet: 'ordererSection' },
       { path: 'orderer-service', component: OrdererServiceFormComponent, outlet: 'ordererSection' },
-      { path: 'orderer-output', component: OrdererOutputComponent, outlet: 'ordererSection' },
-      { path: 'orderer-sample', component: OrdererOutputComponent, outlet: 'ordererSection' }
+      { path: 'add-peerorg', component: AddPeerorgFormComponent, outlet: 'ordererSection' },
+      { path: 'orderer-output', component: OrdererOutputComponent, outlet: 'ordererSection' }
     ]
   },
   { path: 'help', component: HelpComponent },
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     CryptogenFormComponent,
     OrdererServiceFormComponent,
     OrdererOutputComponent,
+    AddPeerorgFormComponent,
   ],
   imports: [
     BrowserModule,
