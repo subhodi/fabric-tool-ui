@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-orderer-output',
   templateUrl: './orderer-output.component.html',
@@ -8,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 export class OrdererOutputComponent implements OnInit {
   peers: Peer[] = [];
   a: any;
+  public pieChartLabels: string[] = ['Used', 'Free'];
+  public pieChartData: number[] = [70, 30];
+  public pieChartColor: any[] = [{ backgroundColor: ['#009688', '#546E7A'] }]; //00BFA5 546E7A
+  public pieChartType = 'pie';
   constructor() {
+
 
   }
 

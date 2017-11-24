@@ -8,7 +8,7 @@ import { DataService } from './services/data.service';
 import { PeerService } from './services/peer.service';
 import { OrdererService } from './services/orderer.service';
 
-import { FormWizardModule } from 'angular2-wizard';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { OrdererComponent } from './components/orderer/orderer.component';
@@ -48,9 +48,9 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    FormWizardModule,
     FormsModule,
     HttpModule,
+    ChartsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [DataService, PeerService, OrdererService],

@@ -1,19 +1,42 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
         <div class="panel panel-primary orderer-panel">
             <div class="panel-heading">
                 <h3 class="panel-title">Orderer</h3>
             </div>
             <div class="container-fluid">
                 <div class="panel-body panel-success">
-                    <ul class="list-group">
-                        <li class="list-group-item">Total peers:5</li>
-                        <li class="list-group-item">Active peers:3</li>
-                        <li class="list-group-item"> CPU :90% </li>
-                        <li class="list-group-item"> Memory :70%</li>
-                    </ul>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="pieChart">
+                                <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [colors]="pieChartColor"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pieChart">
+                                <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [colors]="pieChartColor"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-md-4">
+            <div class="panel panel-primary orderer-panel">
+              <div class="panel-heading">Overview</div>
+              <div class="panel-body">
+                <ul class="list-group">
+                        <li class="list-group-item">Total peers:5</li>
+                        <li class="list-group-item">Active peers:3</li>
+                        <li class="list-group-item"> CPU :90% </li>
+                        <li class="list-group-item"> Memory :70%</li>
+                </ul>
+              </div>
+              <div class="panel-footer">
+              </div>
+            </div>
+          </div>
 </div>
