@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdererService } from '../../../services/orderer.service';
-import { setInterval } from 'timers';
 
 @Component({
   selector: 'app-orderer-output',
