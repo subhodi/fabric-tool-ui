@@ -8,35 +8,35 @@
                 <div class="panel-body panel-success">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="pieChart">
+                            <div class="pie-chart">
                                 <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [colors]="pieChartColor"></canvas>
                             </div>
+                            <div class="text-center">CPU</div>
                         </div>
                         <div class="col-md-6">
-                            <div class="pieChart">
+                            <div class="pie-chart">
                                 <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [colors]="pieChartColor"></canvas>
                             </div>
+                            <div class="text-center">MEMORY</div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-4">
-            <div class="panel panel-primary orderer-panel">
-              <div class="panel-heading">Overview</div>
-              <div class="panel-body">
+        <div class="panel panel-primary orderer-panel">
+            <div class="panel-heading">Overview</div>
+            <div class="panel-body">
                 <ul class="list-group">
-                        <li class="list-group-item">Total peers:5</li>
-                        <li class="list-group-item">Active peers:3</li>
-                        <li class="list-group-item"> CPU :90% </li>
-                        <li class="list-group-item"> Memory :70%</li>
+                    <li class="list-group-item">Total peers:5</li>
+                    <li class="list-group-item">Active peers:3</li>
+                    <li class="list-group-item"> CPU :90% </li>
+                    <li class="list-group-item"> Memory :70%</li>
                 </ul>
-              </div>
-              <div class="panel-footer">
-              </div>
             </div>
-          </div>
+            <div class="panel-footer">
+            </div>
+        </div>
+    </div>
 </div>

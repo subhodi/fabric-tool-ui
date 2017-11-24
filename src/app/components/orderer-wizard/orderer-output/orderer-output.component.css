@@ -1,19 +1,7 @@
-.orderer-panel {
-    border-color: var(--orderer-theme-color);
-}
-
-.orderer-panel > .panel-heading {
-    background-color: var(--orderer-theme-color);
-    border-color:var(--orderer-theme-color);
-    color:white;
-}
-
-.orderer-button {
-    background-color: var(--orderer-theme-color);
-    border-color: var(--orderer-theme-color);
-    color: white;
-}
-
-.pieChart{
+.pie-chart{
     display: block;
+}
+
+.text-center {
+    text-align: center;
 }
