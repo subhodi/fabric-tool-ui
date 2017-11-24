@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
 })
 export class OrdererComponent implements OnInit {
   title = 'Multi-Step Wizard';
-  constructor(private router: Router) { }
+  router: Router;
+  constructor(private routers: Router) { }
 
   ngOnInit() {
-    this.router.navigate(['/orderer', { outlets: { ordererSection: 'cryptogen' } }]);
+    // this.router.navigate(['/orderer', { outlets: { ordererSection: 'cryptogen' } }]);
   }
 
 }

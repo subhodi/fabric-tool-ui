@@ -23,6 +23,7 @@ const appRoutes: Routes = [
   { path: '', component: PeerComponent },
   {
     path: 'orderer', component: OrdererComponent, children: [
+      { path: '', redirectTo: '/orderer/(ordererSection:cryptogen)', pathMatch: 'full' },
       { path: 'cryptogen', component: CryptogenFormComponent, outlet: 'ordererSection' },
       { path: 'orderer-service', component: OrdererServiceFormComponent, outlet: 'ordererSection' },
       { path: 'orderer-output', component: OrdererOutputComponent, outlet: 'ordererSection' },

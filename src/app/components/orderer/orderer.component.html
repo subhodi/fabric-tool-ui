@@ -5,7 +5,7 @@
                 <ul class="nav nav-tabs" id="myTab">
                     <div class="liner"></div>
                     <li>
-                        <a [class.disabled]="true"   [routerLink]="['/orderer',{outlets:{ordererSection:'cryptogen'}}]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" 
+                        <a [routerLink]="['/orderer',{outlets:{ordererSection:'cryptogen'}}]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"  
                             title="Cryptogen">
                             <span class="round-tabs one">
                                 <i class="fa fa-lock" aria-hidden="true"></i>
@@ -14,7 +14,7 @@
                     </li>
 
                     <li>
-                        <a [class.disabled]="true" [routerLink]="['/orderer',{outlets:{ordererSection:'orderer-service'}}]" routerLinkActive="active" title="Ordering service config">
+                        <a  [routerLink]="['/orderer',{outlets:{ordererSection:'orderer-service'}}]" routerLinkActive="active" title="Ordering service config">
                             <span class="round-tabs two">
                                 <i class="fa fa-server"></i>
                             </span>
@@ -22,7 +22,7 @@
                     </li>
 
                     <li>
-                        <a [class.disabled]="true" [routerLink]="['/orderer',{outlets:{ordererSection:'orderer-sample'}}]" routerLinkActive="active" title="Add Peer org">
+                        <a  [routerLink]="['/orderer',{outlets:{ordererSection:'orderer-sample'}}]" routerLinkActive="active" title="Add Peer org">
                             <span class="round-tabs three">
                                 <i class="fa fa-plus"></i>
                             </span>
@@ -30,7 +30,7 @@
                     </li>
 
                     <li>
-                            <a [class.disabled]="true" [routerLink]="['/orderer',{outlets:{ordererSection:'orderer-output'}}]" routerLinkActive="active" title="Peer status">
+                            <a  [routerLink]="['/orderer',{outlets:{ordererSection:'orderer-output'}}]" routerLinkActive="active" title="Peer status">
                                 <span class="round-tabs four">
                                     <i class="fa fa-file"></i>
                                 </span>

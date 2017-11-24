@@ -9,12 +9,13 @@ export class OrdererService {
   constructor(private http: Http) { }
 
   getOrderer() {
-    return this.orderer;
+    return this.orderer ? this.orderer : JSON.parse(localStorage.getItem('orderer'));
   }
 
   submit(cryptogenForm: object) {
     const orderer: Object = cryptogenForm['OrdererOrgs'][0];
     this.orderer = { 'org': orderer['Name'], 'domain': orderer['Domain'], 'host': orderer['Specs'][0]['Hostname'] };
+    localStorage.setItem('orderer', JSON.stringify(this.orderer));
     return this.http.post(environment.apiUrl + '/network/yaml-file?fileName=crypto-config.yaml', cryptogenForm);
   }
 
