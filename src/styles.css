@@ -34,6 +34,12 @@
     color: white;
 }
 
+.peer-button:hover {
+    color: #fff;
+    background-color:  var(--orderer-theme-color);
+    border-color:  var(--orderer-theme-color);
+}
+
 .orderer-panel {
     border-color: var(--orderer-theme-color);
 }
@@ -48,4 +54,10 @@
     background-color: var(--orderer-theme-color);
     border-color: var(--orderer-theme-color);
     color: white;
+}
+
+.orderer-button:hover {
+    color: #fff;
+    background-color:  var(--peer-theme-color);
+    border-color:  var(--peer-theme-color);
 }
