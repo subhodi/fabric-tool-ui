@@ -74,7 +74,7 @@ export class CryptogenFormComponent implements OnInit {
       console.log(data);
       this.StateStatus.cryptogen = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
-      this.router.navigate(['/orderer', { outlets: { ordererSection: 'orderer-service' } }]);
+      // this.router.navigate(['/orderer', { outlets: { ordererSection: 'orderer-service' } }]);
     }, err => {
       console.error(err);
       this.StateStatus.cryptogen = RequestStatus.failure;

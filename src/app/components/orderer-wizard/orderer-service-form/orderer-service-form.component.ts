@@ -321,7 +321,7 @@ export class OrdererServiceFormComponent implements OnInit {
       console.log(data);
       this.StateStatus.peerUp = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
-      this.router.navigate(['/orderer', { outlets: { ordererSection: 'orderer-output' } }]);
+      // this.router.navigate(['/orderer', { outlets: { ordererSection: 'orderer-output' } }]);
     }, err => {
       console.error(err);
       this.StateStatus.peerUp = RequestStatus.failure;
