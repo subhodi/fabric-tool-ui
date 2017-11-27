@@ -23,7 +23,7 @@ export class AddPeerorgFormComponent implements OnInit {
     if (fi.files && fi.files[0]) {
       const fileToUpload = fi.files[0];
       const peerData = fileToUpload.name.split('.');
-      this.ordererService.upload(peerData[0], fileToUpload)
+      this.ordererService.upload(peerData[0], peerData[1] + '.' + [peerData[2]], fileToUpload)
         .subscribe(data => {
           this.peers.push({ orgName: peerData[0], domain: peerData[1] + '.' + [peerData[2]] });
           this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };

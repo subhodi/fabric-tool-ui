@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class OrdererService {
   orderer: Orderer;
+  peers: Peer[] = [];
   constructor(private http: Http) { }
 
   getSystemStats() {
@@ -14,6 +15,10 @@ export class OrdererService {
 
   getOrderer() {
     return this.orderer ? this.orderer : JSON.parse(localStorage.getItem('orderer'));
+  }
+
+  getPeers() {
+    return this.peers ? this.peers : JSON.parse(localStorage.getItem('peers'));
   }
 
   submit(cryptogenForm: object) {
@@ -52,7 +57,8 @@ export class OrdererService {
     return this.http.post(environment.apiUrl + '/network/?fileName=docker-compose.yaml', {});
   }
 
-  upload(orgName: string, fileToUpload: any) {
+  upload(orgName: string, domain: string, fileToUpload: any) {
+    this.peers.push({ 'orgName': orgName, 'domain': domain });
     const input = new FormData();
     input.append('file', fileToUpload);
     return this.http.post(environment.apiUrl + '/network/org/' + orgName, input);
@@ -64,4 +70,9 @@ interface Orderer {
   org: string;
   domain: string;
   host: string;
+}
+
+interface Peer {
+  orgName: string;
+  domain: string;
 }

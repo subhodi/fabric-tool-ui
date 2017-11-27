@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { OrdererService } from '../../../services/orderer.service';
 
 import { RequestStatus, APIResponse } from '../../../model/model.interface';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-orderer-service-form',
@@ -137,6 +138,38 @@ export class OrdererServiceFormComponent implements OnInit {
   }
 
   save(configtx) {
+    const peers = this.ordererService.getPeers();
+    const peerObjectArray: Array<Object> = [];
+    const peerOrdererObjectArray: Array<Object> = [
+      {
+        'Name': this.orderer.org + 'MSP',
+        'ID': this.orderer.org + 'MSP',
+        'MSPDir': 'crypto-config/ordererOrganizations/' + this.orderer.domain + '/msp'
+      }];
+    peers.forEach((peer, index) => {
+      peerObjectArray.push({
+        'Name': peer.orgName,
+        'ID': peer.orgName,
+        'MSPDir': 'crypto-config/peerOrganizations/' + peer.orgName + '.' + peer.domain + '/msp',
+        'AnchorPeers': [
+          {
+            'Host': 'peer0.' + peer.orgName + '.' + peer.domain,
+            'Port': 7051
+          }
+        ]
+      });
+      peerOrdererObjectArray.push({
+        'Name': peer.orgName,
+        'ID': peer.orgName,
+        'MSPDir': 'crypto-config/peerOrganizations/' + peer.orgName + '.' + peer.domain + '/msp',
+        'AnchorPeers': [
+          {
+            'Host': 'peer0.' + peer.orgName + '.' + peer.domain,
+            'Port': 7051
+          }
+        ]
+      });
+    });
     this.configtxForm = {
       'Orderer': {
         'OrdererType': configtx.ordererType,
@@ -159,24 +192,7 @@ export class OrdererServiceFormComponent implements OnInit {
       'Application': {
         'Organizations': null
       },
-      'Organizations': [
-        {
-          'Name': this.orderer.org + 'MSP',
-          'ID': this.orderer.org + 'MSP',
-          'MSPDir': 'crypto-config/ordererOrganizations/' + this.orderer.domain + '/msp'
-        },
-        {
-          'Name': 'Org1',
-          'ID': 'Org1',
-          'MSPDir': 'crypto-config/peerOrganizations/org1.example.com/msp',
-          'AnchorPeers': [
-            {
-              'Host': 'peer0.org1.example.com',
-              'Port': 7051
-            }
-          ]
-        }
-      ],
+      'Organizations': peerOrdererObjectArray,
       'Profiles': {
         'TwoOrgsOrdererGenesis': {
           'Orderer': {
@@ -205,38 +221,14 @@ export class OrdererServiceFormComponent implements OnInit {
           },
           'Consortiums': {
             'SampleConsortium': {
-              'Organizations': [
-                {
-                  'Name': 'Org1',
-                  'ID': 'Org1',
-                  'MSPDir': 'crypto-config/peerOrganizations/org1.example.com/msp',
-                  'AnchorPeers': [
-                    {
-                      'Host': 'peer0.org1.example.com',
-                      'Port': 7051
-                    }
-                  ]
-                }
-              ]
+              'Organizations': peerObjectArray
             }
           }
         },
         'TwoOrgsChannel': {
           'Consortium': 'SampleConsortium',
           'Application': {
-            'Organizations': [
-              {
-                'Name': 'Org1',
-                'ID': 'Org1',
-                'MSPDir': 'crypto-config/peerOrganizations/org1.example.com/msp',
-                'AnchorPeers': [
-                  {
-                    'Host': 'peer0.org1.example.com',
-                    'Port': 7051
-                  }
-                ]
-              }
-            ]
+            'Organizations': peerObjectArray
           }
         }
       }
