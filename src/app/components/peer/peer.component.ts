@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeerService } from '../../services/peer.service';
 import { RequestStatus, APIResponse } from '../../model/model.interface';
+import { Response } from '@angular/http/src/static_response';
 
 @Component({
   selector: 'app-peer',
@@ -34,6 +35,11 @@ export class PeerComponent implements OnInit {
       ]
     };
     this.apiResponse = { 'status': true, 'message': 'Hit submit to start', path: null };
+  }
+
+  export() {
+    const peer = this.peerService.getPeer();
+    this.peerService.export('peer0', peer.orgName, peer.domain);
   }
 
   save(peer) {
