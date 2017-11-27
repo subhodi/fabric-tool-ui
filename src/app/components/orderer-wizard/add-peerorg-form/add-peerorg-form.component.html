@@ -11,9 +11,8 @@
                             <div class="form-group">
                                 <label for="peerorgFile">Upload Peer</label>
                                 <button type="submit" class="btn btn-default orderer-button pull-right" (click)="upload(peerFile)">Upload</button>
-                                <input type="file" id="peerorgFile" [(ngModel)]="peerFile" name="peerFile">
+                                <input type="file" id="peerorgFile" #peerFile>
                                 <p class="help-block">Upload peer exported compressed file with certificates.</p>
-
                             </div>
                         </form>
                     </div>
@@ -27,6 +26,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr *ngIf="peers.length == 0">
+                                    <td colspan="3" class="text-center">No peer</td>
+                                </tr>
                                 <tr *ngFor="let peer of peers ; let i= index">
                                     <td>{{i+1}}</td>
                                     <td>{{ peer.orgName}}</td>
@@ -40,18 +42,12 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="panel panel-primary orderer-panel">
-            <div class="panel-heading">Info</div>
+        <div class="panel" [ngClass]="apiResponse.status == true ? 'panel-primary orderer-panel' : 'panel-danger'">
+            <div class="panel-heading">Response</div>
             <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">Total peers:5</li>
-                    <li class="list-group-item">Active peers:3</li>
-                    <li class="list-group-item"> CPU :90% </li>
-                    <li class="list-group-item"> Memory :70%</li>
-                </ul>
+                <p class="text-left">{{apiResponse.message}}</p>
             </div>
             <div class="panel-footer">
-                <!-- <p class="text-left">{{apiResponse.message}} {{ apiResponse.path}}</p> -->
             </div>
         </div>
     </div>

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
+import { OrdererService } from '../../../services/orderer.service';
+import { RequestStatus, APIResponse } from '../../../model/model.interface';
 @Component({
   selector: 'app-add-peerorg-form',
   templateUrl: './add-peerorg-form.component.html',
@@ -7,20 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPeerorgFormComponent implements OnInit {
   peers: Peer[] = [];
-  a: any;
   peerFile: any;
-  constructor() { }
+  apiResponse: APIResponse;
+  @ViewChild('peerFile') fileInput;
+  constructor(private ordererService: OrdererService) { }
 
   ngOnInit() {
-    this.peers.push({ orgName: 'ca_peerOrg1', domain: 'example.com' });
-    this.peers.push({ orgName: 'ca_peerOrg2', domain: 'example.com' });
-    this.peers.push({ orgName: 'ca_peerOrg3', domain: 'example.com' });
-    this.peers.push({ orgName: 'ca_peerOrg4', domain: 'example.com' });
-    this.peers.push({ orgName: 'ca_peerOrg5', domain: 'example.com' });
+    this.apiResponse = { 'status': true, 'message': 'Hit Upload to start', path: null };
   }
 
   upload() {
-
+    const fi = this.fileInput.nativeElement;
+    if (fi.files && fi.files[0]) {
+      const fileToUpload = fi.files[0];
+      const peerData = fileToUpload.name.split('.');
+      this.ordererService.upload(peerData[0], fileToUpload)
+        .subscribe(data => {
+          this.peers.push({ orgName: peerData[0], domain: peerData[1] + '.' + [peerData[2]] });
+          this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
+        }, err => {
+          this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
+        });
+    }
   }
 
 }

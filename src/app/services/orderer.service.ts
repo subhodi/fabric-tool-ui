@@ -52,6 +52,12 @@ export class OrdererService {
     return this.http.post(environment.apiUrl + '/network/?fileName=docker-compose.yaml', {});
   }
 
+  upload(orgName: string, fileToUpload: any) {
+    const input = new FormData();
+    input.append('file', fileToUpload);
+    return this.http.post(environment.apiUrl + '/network/org/' + orgName, input);
+  }
+
 }
 
 interface Orderer {
