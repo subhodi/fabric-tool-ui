@@ -56,6 +56,17 @@ export class OrdererServiceFormComponent implements OnInit {
           'Name': this.orderer.org + 'MSP',
           'ID': this.orderer.org + 'MSP',
           'MSPDir': 'crypto-config/ordererOrganizations/' + this.orderer.domain + '/msp'
+        },
+        {
+          'Name': 'Org1',
+          'ID': 'Org1',
+          'MSPDir': 'crypto-config/peerOrganizations/example.com/msp',
+          'AnchorPeers': [
+            {
+              'Host': 'peer0.org1.example.com',
+              'Port': 7051
+            }
+          ]
         }
       ],
       'Profiles': {
@@ -87,7 +98,17 @@ export class OrdererServiceFormComponent implements OnInit {
           'Consortiums': {
             'SampleConsortium': {
               'Organizations': [
-
+                {
+                  'Name': 'Org1',
+                  'ID': 'Org1',
+                  'MSPDir': 'crypto-config/peerOrganizations/org1.example.com/msp',
+                  'AnchorPeers': [
+                    {
+                      'Host': 'peer0.org1.example.com',
+                      'Port': 7051
+                    }
+                  ]
+                }
               ]
             }
           }
@@ -96,7 +117,17 @@ export class OrdererServiceFormComponent implements OnInit {
           'Consortium': 'SampleConsortium',
           'Application': {
             'Organizations': [
-
+              {
+                'Name': 'Org1',
+                'ID': 'Org1',
+                'MSPDir': 'crypto-config/peerOrganizations/org1.example.com/msp',
+                'AnchorPeers': [
+                  {
+                    'Host': 'peer0.org1.example.com',
+                    'Port': 7051
+                  }
+                ]
+              }
             ]
           }
         }
@@ -133,6 +164,17 @@ export class OrdererServiceFormComponent implements OnInit {
           'Name': this.orderer.org + 'MSP',
           'ID': this.orderer.org + 'MSP',
           'MSPDir': 'crypto-config/ordererOrganizations/' + this.orderer.domain + '/msp'
+        },
+        {
+          'Name': 'Org1',
+          'ID': 'Org1',
+          'MSPDir': 'crypto-config/peerOrganizations/org1.example.com/msp',
+          'AnchorPeers': [
+            {
+              'Host': 'peer0.org1.example.com',
+              'Port': 7051
+            }
+          ]
         }
       ],
       'Profiles': {
@@ -164,7 +206,17 @@ export class OrdererServiceFormComponent implements OnInit {
           'Consortiums': {
             'SampleConsortium': {
               'Organizations': [
-
+                {
+                  'Name': 'Org1',
+                  'ID': 'Org1',
+                  'MSPDir': 'crypto-config/peerOrganizations/org1.example.com/msp',
+                  'AnchorPeers': [
+                    {
+                      'Host': 'peer0.org1.example.com',
+                      'Port': 7051
+                    }
+                  ]
+                }
               ]
             }
           }
@@ -173,7 +225,17 @@ export class OrdererServiceFormComponent implements OnInit {
           'Consortium': 'SampleConsortium',
           'Application': {
             'Organizations': [
-
+              {
+                'Name': 'Org1',
+                'ID': 'Org1',
+                'MSPDir': 'crypto-config/peerOrganizations/org1.example.com/msp',
+                'AnchorPeers': [
+                  {
+                    'Host': 'peer0.org1.example.com',
+                    'Port': 7051
+                  }
+                ]
+              }
             ]
           }
         }

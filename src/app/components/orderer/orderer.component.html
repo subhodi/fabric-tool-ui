@@ -14,17 +14,17 @@
                     </li>
 
                     <li>
+                            <a  [routerLink]="['/orderer',{outlets:{ordererSection:'add-peerorg'}}]" routerLinkActive="active" title="Add Peer org">
+                                <span class="round-tabs three">
+                                    <i class="fa fa-plus"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                    <li>
                         <a  [routerLink]="['/orderer',{outlets:{ordererSection:'orderer-service'}}]" routerLinkActive="active" title="Ordering service config">
                             <span class="round-tabs two">
                                 <i class="fa fa-server"></i>
-                            </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a  [routerLink]="['/orderer',{outlets:{ordererSection:'add-peerorg'}}]" routerLinkActive="active" title="Add Peer org">
-                            <span class="round-tabs three">
-                                <i class="fa fa-plus"></i>
                             </span>
                         </a>
                     </li>

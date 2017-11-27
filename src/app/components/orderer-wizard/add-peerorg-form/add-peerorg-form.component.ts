@@ -8,23 +8,25 @@ import { Component, OnInit } from '@angular/core';
 export class AddPeerorgFormComponent implements OnInit {
   peers: Peer[] = [];
   a: any;
+  peerFile: any;
   constructor() { }
 
   ngOnInit() {
-    this.peers.push({ containerId: '5d8586f00eae', name: 'ca_peerOrg1', created: '17 hours ago', status: 'Up 17 hours', action: 'remove' });
-    this.peers.push({ containerId: '5d8586f00eae', name: 'ca_peerOrg2', created: '17 hours ago', status: 'Up 17 hours', action: 'remove' });
-    this.peers.push({ containerId: '5d8586f00eae', name: 'ca_peerOrg3', created: '17 hours ago', status: 'Up 17 hours', action: 'remove' });
-    this.peers.push({ containerId: '5d8586f00eae', name: 'ca_peerOrg4', created: '17 hours ago', status: 'Up 17 hours', action: 'remove' });
-    this.peers.push({ containerId: '5d8586f00eae', name: 'ca_peerOrg5', created: '17 hours ago', status: 'Up 17 hours', action: 'remove' });
+    this.peers.push({ orgName: 'ca_peerOrg1', domain: 'example.com' });
+    this.peers.push({ orgName: 'ca_peerOrg2', domain: 'example.com' });
+    this.peers.push({ orgName: 'ca_peerOrg3', domain: 'example.com' });
+    this.peers.push({ orgName: 'ca_peerOrg4', domain: 'example.com' });
+    this.peers.push({ orgName: 'ca_peerOrg5', domain: 'example.com' });
+  }
+
+  upload() {
+
   }
 
 }
 
 interface Peer {
-  containerId: string;
-  name: string;
-  created: string;
-  status: string;
-  action: string;
+  orgName: string;
+  domain: string;
 }
 
