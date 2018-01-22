@@ -134,7 +134,7 @@ export class OrdererServiceFormComponent implements OnInit {
         }
       }
     };
-    this.apiResponse = { 'status': true, 'message': 'Hit submit to start', path: null };
+    this.apiResponse = { 'status': true, 'message': 'Hit Save to start', path: null };
   }
 
   save(configtx) {

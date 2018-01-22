@@ -48,7 +48,7 @@
                             </div>
                         </div>
 
-                        <button id="save-btn" class="btn btn-primary orderer-button" (click)="save(configtx)">Preview
+                        <button id="save-btn" class="btn btn-primary orderer-button" (click)="save(configtx)">Save to preview
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </button>
                         <button id="save-btn" class="btn btn-primary orderer-button" (click)="configTx()">Submit
@@ -71,15 +71,15 @@
             <div class="panel-body">
                 <ul class="list-group">
                     <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.submit != requestStatus.pending && StateStatus.submit}">
-                        <app-task-status status="{{StateStatus.submit}}"></app-task-status> Submit data</li>
+                        <app-task-status status="{{StateStatus.submit}}"></app-task-status> Save</li>
                     <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.configTx != requestStatus.pending && StateStatus.configTx}">
-                        <app-task-status status="{{StateStatus.configTx}}"></app-task-status> ConfigTx</li>
+                        <app-task-status status="{{StateStatus.configTx}}"></app-task-status> Generating ConfigTx file</li>
                     <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.genesisBlock != requestStatus.pending && StateStatus.genesisBlock}">
-                        <app-task-status status="{{StateStatus.genesisBlock}}"></app-task-status>Genesis block</li>
+                        <app-task-status status="{{StateStatus.genesisBlock}}"></app-task-status>Generating Genesis block</li>
                     <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.channelTx != requestStatus.pending && StateStatus.channelTx}">
-                        <app-task-status status="{{StateStatus.channelTx}}"></app-task-status> Channel TX</li>
+                        <app-task-status status="{{StateStatus.channelTx}}"></app-task-status>Generating Channel TX file</li>
                     <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.dockerCompose != requestStatus.pending && StateStatus.dockerCompose}">
-                        <app-task-status status="{{StateStatus.dockerCompose}}"></app-task-status> Docker compose file</li>
+                        <app-task-status status="{{StateStatus.dockerCompose}}"></app-task-status>Generating Docker compose file</li>
                     <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.peerUp != requestStatus.pending && StateStatus.peerUp}">
                         <app-task-status status="{{StateStatus.peerUp}}"></app-task-status>Starting peer</li>
                 </ul>

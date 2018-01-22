@@ -2,3 +2,8 @@ a.disabled {
     pointer-events: none;
  }
 
+li>i {
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}

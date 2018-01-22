@@ -18,7 +18,6 @@ export class PeerService {
 
   submit(peerForm: object) {
     const peerOrgs = peerForm['PeerOrgs'][0];
-    console.log(peerOrgs);
     localStorage.setItem('peer', JSON.stringify({ 'orgName': peerOrgs['Name'], 'domain': peerOrgs['Domain'] }));
     return this.http.post(environment.apiUrl + '/network/yaml-file?fileName=crypto-config.yaml', peerForm);
   }

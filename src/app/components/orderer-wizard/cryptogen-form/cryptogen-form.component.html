@@ -29,7 +29,7 @@
               </div>
             </div>
 
-            <button id="save-btn" class="btn btn-primary orderer-button" (click)="save(orderer)">Preview
+            <button id="save-btn" class="btn btn-primary orderer-button" (click)="save(orderer)">Save to preview
               <i class="fa fa-eye" aria-hidden="true"></i>
             </button>
             <button id="save-btn" class="btn btn-primary orderer-button" (click)="submit()">Submit
@@ -52,7 +52,7 @@
       <div class="panel-body">
         <ul class="list-group">
             <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.submit != requestStatus.pending && StateStatus.submit}">
-                <app-task-status status="{{StateStatus.submit}}"></app-task-status> Submit data</li>
+                <app-task-status status="{{StateStatus.submit}}"></app-task-status> Save</li>
               <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptoConfigFile != requestStatus.pending && StateStatus.cryptoConfigFile}">
                 <app-task-status status="{{StateStatus.cryptoConfigFile}}"></app-task-status> Generating crypto-config file</li>
               <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptogen != requestStatus.pending && StateStatus.cryptogen}">

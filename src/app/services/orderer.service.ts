@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
+import {Orderer, Peer } from '../model/model.interface';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -64,15 +65,4 @@ export class OrdererService {
     return this.http.post(environment.apiUrl + '/network/org/' + orgName, input);
   }
 
-}
-
-interface Orderer {
-  org: string;
-  domain: string;
-  host: string;
-}
-
-interface Peer {
-  orgName: string;
-  domain: string;
 }

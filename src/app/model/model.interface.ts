@@ -9,3 +9,15 @@ export interface APIResponse {
   message: string;
   path: string;
 }
+
+export interface Orderer {
+  org: string;
+  domain: string;
+  host: string;
+}
+
+export interface Peer {
+  orgName: string;
+  domain: string;
+}
+

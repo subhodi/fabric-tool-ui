@@ -32,7 +32,7 @@
                     class="form-control" required />
                 </div>
               </div>
-              <button id="save-btn" class="btn btn-success peer-button" (click)="save(peer)">Preview
+              <button id="save-btn" class="btn btn-success peer-button" (click)="save(peer)">Save to preview
                 <i class="fa fa-eye" aria-hidden="true"></i>
               </button>
               <button id="save-btn" class="btn btn-success peer-button" (click)="submit()">Submit
@@ -59,7 +59,7 @@
         <div class="panel-body">
           <ul class="list-group">
             <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.submit != requestStatus.pending && StateStatus.submit}">
-              <app-task-status status="{{StateStatus.submit}}"></app-task-status> Submit data</li>
+              <app-task-status status="{{StateStatus.submit}}"></app-task-status> Save</li>
             <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptoConfigFile != requestStatus.pending && StateStatus.cryptoConfigFile}">
               <app-task-status status="{{StateStatus.cryptoConfigFile}}"></app-task-status> Generating crypto-config file</li>
             <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptogen != requestStatus.pending && StateStatus.cryptogen}">
@@ -76,28 +76,3 @@
       </div>
     </div>
   </div>
-
-
-
-  <!-- <form-wizard>
-        <wizard-step [title]="'Step1'"  (onNext)="onStep1Next($event)">
-          <h1>Step1</h1>
-        </wizard-step>
-        <wizard-step [title]="'Step2'" (onNext)="onStep2Next($event)">
-          <h1>Step2</h1>
-        </wizard-step>
-        <wizard-step [title]="'Step3'" (onNext)="onStep3Next($event)">
-          <h1>Step3</h1>
-        </wizard-step>
-        <wizard-step [title]="'Step4'" (onComplete)="onComplete($event)">
-          <div [ngSwitch]="isCompleted">
-            <div *ngSwitchDefault>
-              <h1>Step4</h1>
-            </div>
-            <div *ngSwitchCase="true">
-              <h4>Thank you! You have completed all the steps.</h4>
-            </div>
-          </div>
-        </wizard-step>
-      </form-wizard>
-     -->
