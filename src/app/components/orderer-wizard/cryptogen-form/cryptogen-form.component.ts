@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { OrdererService } from '../../../services/orderer.service';
 
-import { RequestStatus, APIResponse } from '../../../model/model.interface';
+import { RequestStatus, APIResponse, OrdererCryptoConfig, OrdererCryptoConfigStates } from '../../../model/model.interface';
 
 @Component({
   selector: 'app-cryptogen-form',
@@ -13,8 +13,8 @@ import { RequestStatus, APIResponse } from '../../../model/model.interface';
 
 export class CryptogenFormComponent implements OnInit {
   cryptogenForm: Object;
-  orderer: Object;
-  StateStatus: any = {};
+  orderer: OrdererCryptoConfig;
+  state: OrdererCryptoConfigStates;
   apiResponse: APIResponse;
   requestStatus = RequestStatus;
   constructor(private ordererService: OrdererService, private router: Router) { }
@@ -35,6 +35,11 @@ export class CryptogenFormComponent implements OnInit {
       ]
     };
     this.apiResponse = { 'status': true, 'message': 'Hit Save to start', path: null };
+    this.state = {
+      save: undefined,
+      cryptoConfigFile: undefined,
+      cryptogen: undefined
+    };
   }
 
   save(orderer) {
@@ -51,20 +56,22 @@ export class CryptogenFormComponent implements OnInit {
         }
       ]
     };
-    this.StateStatus.submit = RequestStatus.success;
-    this.StateStatus.cryptoConfigFile = RequestStatus.pending;
-    this.StateStatus.cryptogen = RequestStatus.pending;
+    this.state = {
+      save: RequestStatus.success,
+      cryptoConfigFile: RequestStatus.pending,
+      cryptogen: RequestStatus.pending
+    };
     this.apiResponse = { 'status': true, 'message': 'Hit submit to start', path: null };
   }
 
   submit() {
     this.ordererService.submit(this.cryptogenForm).subscribe(data => {
-      this.StateStatus.cryptoConfigFile = RequestStatus.success;
+      this.state.cryptoConfigFile = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
       this.cryptogen();
     }, err => {
       console.error(err);
-      this.StateStatus.cryptoConfigFile = RequestStatus.failure;
+      this.state.cryptoConfigFile = RequestStatus.failure;
       this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
     });
   }
@@ -72,12 +79,12 @@ export class CryptogenFormComponent implements OnInit {
   cryptogen() {
     this.ordererService.cryptogen().subscribe(data => {
       console.log(data);
-      this.StateStatus.cryptogen = RequestStatus.success;
+      this.state.cryptogen = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
-      // this.router.navigate(['/orderer', { outlets: { ordererSection: 'orderer-service' } }]);
+      // this.router.navigate(['/orderer', { outlets: { ordererSection: 'add-peerorg' } }]);
     }, err => {
       console.error(err);
-      this.StateStatus.cryptogen = RequestStatus.failure;
+      this.state.cryptogen = RequestStatus.failure;
       this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
     });
   }

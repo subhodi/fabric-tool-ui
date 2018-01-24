@@ -35,3 +35,16 @@ export interface PeerStates {
   dockerCompose: RequestStatus;
   peerUp: RequestStatus;
 }
+
+export interface OrdererCryptoConfig {
+  name: string;
+  domain: string;
+  host: string;
+}
+
+export interface OrdererCryptoConfigStates {
+  save: RequestStatus;
+  cryptoConfigFile: RequestStatus;
+  cryptogen: RequestStatus;
+
+}

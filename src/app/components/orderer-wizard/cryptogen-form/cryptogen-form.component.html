@@ -51,12 +51,12 @@
       <div class="panel-heading">Task list</div>
       <div class="panel-body">
         <ul class="list-group">
-            <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.submit != requestStatus.pending && StateStatus.submit}">
-                <app-task-status status="{{StateStatus.submit}}"></app-task-status> Save</li>
-              <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptoConfigFile != requestStatus.pending && StateStatus.cryptoConfigFile}">
-                <app-task-status status="{{StateStatus.cryptoConfigFile}}"></app-task-status> Generating crypto-config file</li>
-              <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptogen != requestStatus.pending && StateStatus.cryptogen}">
-                <app-task-status status="{{StateStatus.cryptogen}}"></app-task-status> Generating crypto certificates</li>
+            <li class="list-group-item" [ngClass]="{'strikethrough': state.save != requestStatus.pending && state.save}">
+                <app-task-status status="{{state.save}}"></app-task-status> Save</li>
+              <li class="list-group-item" [ngClass]="{'strikethrough': state.cryptoConfigFile != requestStatus.pending && state.cryptoConfigFile}">
+                <app-task-status status="{{state.cryptoConfigFile}}"></app-task-status> Generating crypto-config file</li>
+              <li class="list-group-item" [ngClass]="{'strikethrough': state.cryptogen != requestStatus.pending && state.cryptogen}">
+                <app-task-status status="{{state.cryptogen}}"></app-task-status> Generating crypto certificates</li>
         </ul>
       </div>
       <div class="panel-footer">
