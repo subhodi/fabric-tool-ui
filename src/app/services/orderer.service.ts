@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-import {Orderer, Peer } from '../model/model.interface';
+import { Orderer } from '../model/orderer.interface';
+import { Peer } from '../model/peer.interface';
 import { environment } from '../../environments/environment';
 
 @Injectable()

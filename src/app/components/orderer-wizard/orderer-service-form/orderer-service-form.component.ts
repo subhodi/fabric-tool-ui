@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { OrdererService } from '../../../services/orderer.service';
 
-import { RequestStatus, APIResponse, Orderer, OrdererConfigtx, OrdererConfigtxStates } from '../../../model/model.interface';
+import { RequestStatus, APIResponse, Orderer, OrdererConfigtx, OrdererConfigtxStates } from '../../../model/orderer.interface';
 import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { OrdererService } from '../../../services/orderer.service';
 
-import { RequestStatus, APIResponse, OrdererCryptoConfig, OrdererCryptoConfigStates } from '../../../model/model.interface';
+import { RequestStatus, APIResponse, OrdererCryptoConfig, OrdererCryptoConfigStates } from '../../../model/orderer.interface';
 
 @Component({
   selector: 'app-cryptogen-form',

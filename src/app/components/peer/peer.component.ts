@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PeerService } from '../../services/peer.service';
-import { RequestStatus, APIResponse, PeerCryptoConfig, PeerStates } from '../../model/model.interface';
+import { RequestStatus, APIResponse, PeerCryptoConfig, PeerStates } from '../../model/peer.interface';
 import { Response } from '@angular/http/src/static_response';
 
 @Component({

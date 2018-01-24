@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { OrdererService } from '../../../services/orderer.service';
-import { RequestStatus, APIResponse, Peer} from '../../../model/model.interface';
+
+import { RequestStatus, APIResponse } from '../../../model/orderer.interface';
+import { Peer } from '../../../model/peer.interface';
 
 @Component({
   selector: 'app-add-peerorg-form',
