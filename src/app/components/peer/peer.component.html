@@ -39,7 +39,7 @@
                 <i class="fa fa-upload" aria-hidden="true"></i>
               </button>
 
-              <button id="save-btn" class="btn btn-success peer-button pull-right" (click)="export()" *ngIf="StateStatus.peerUp == requestStatus.success">Export
+              <button id="save-btn" class="btn btn-success peer-button pull-right" (click)="export()" *ngIf="state.peerUp == requestStatus.success">Export
                 <i class="fa fa-download" aria-hidden="true"></i>
               </button>
 
@@ -58,16 +58,16 @@
         <div class="panel-heading">Task list</div>
         <div class="panel-body">
           <ul class="list-group">
-            <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.submit != requestStatus.pending && StateStatus.submit}">
-              <app-task-status status="{{StateStatus.submit}}"></app-task-status> Save</li>
-            <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptoConfigFile != requestStatus.pending && StateStatus.cryptoConfigFile}">
-              <app-task-status status="{{StateStatus.cryptoConfigFile}}"></app-task-status> Generating crypto-config file</li>
-            <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.cryptogen != requestStatus.pending && StateStatus.cryptogen}">
-              <app-task-status status="{{StateStatus.cryptogen}}"></app-task-status> Generating crypto certificates</li>
-            <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.dockerCompose != requestStatus.pending && StateStatus.dockerCompose}">
-              <app-task-status status="{{StateStatus.dockerCompose}}"></app-task-status> Generating docker-compose file</li>
-            <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.peerUp != requestStatus.pending && StateStatus.peerUp}">
-              <app-task-status status="{{ StateStatus.peerUp}}"></app-task-status> Starting peers</li>
+            <li class="list-group-item" [ngClass]="{'strikethrough': state.save != requestStatus.pending && state.save}">
+              <app-task-status status="{{state.save}}"></app-task-status> Save</li>
+            <li class="list-group-item" [ngClass]="{'strikethrough': state.cryptoConfigFile != requestStatus.pending && state.cryptoConfigFile}">
+              <app-task-status status="{{state.cryptoConfigFile}}"></app-task-status> Generating crypto-config file</li>
+            <li class="list-group-item" [ngClass]="{'strikethrough': state.cryptogen != requestStatus.pending && state.cryptogen}">
+              <app-task-status status="{{state.cryptogen}}"></app-task-status> Generating crypto certificates</li>
+            <li class="list-group-item" [ngClass]="{'strikethrough': state.dockerCompose != requestStatus.pending && state.dockerCompose}">
+              <app-task-status status="{{state.dockerCompose}}"></app-task-status> Generating docker-compose file</li>
+            <li class="list-group-item" [ngClass]="{'strikethrough': state.peerUp != requestStatus.pending && state.peerUp}">
+              <app-task-status status="{{ state.peerUp}}"></app-task-status> Starting peers</li>
           </ul>
         </div>
         <div class="panel-footer">

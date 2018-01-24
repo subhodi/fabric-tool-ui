@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PeerService } from '../../services/peer.service';
-import { RequestStatus, APIResponse } from '../../model/model.interface';
+import { RequestStatus, APIResponse, PeerCryptoConfig, PeerStates } from '../../model/model.interface';
 import { Response } from '@angular/http/src/static_response';
 
 @Component({
@@ -10,9 +10,9 @@ import { Response } from '@angular/http/src/static_response';
 })
 export class PeerComponent implements OnInit {
   peerForm: Object;
-  peer: Object;
+  peer: PeerCryptoConfig;
   requestStatus = RequestStatus;
-  StateStatus: any = {};
+  state: PeerStates;
   apiResponse: APIResponse;
 
   constructor(private peerService: PeerService) {
@@ -35,6 +35,13 @@ export class PeerComponent implements OnInit {
       ]
     };
     this.apiResponse = { 'status': true, 'message': 'Hit Save to start', path: null };
+    this.state = {
+      save: undefined,
+      cryptoConfigFile: undefined,
+      cryptogen: undefined,
+      dockerCompose: undefined,
+      peerUp: undefined
+    };
   }
 
   export() {
@@ -57,22 +64,25 @@ export class PeerComponent implements OnInit {
         }
       ]
     };
-    this.StateStatus.submit = RequestStatus.success;
-    this.StateStatus.cryptoConfigFile = RequestStatus.pending;
-    this.StateStatus.cryptogen = RequestStatus.pending;
-    this.StateStatus.dockerCompose = RequestStatus.pending;
-    this.StateStatus.peerUp = RequestStatus.pending;
+
+    this.state = {
+      save: RequestStatus.success,
+      cryptoConfigFile: RequestStatus.pending,
+      cryptogen: RequestStatus.pending,
+      dockerCompose: RequestStatus.pending,
+      peerUp: RequestStatus.pending
+    };
     this.apiResponse = { 'status': true, 'message': 'Hit submit to start', path: null };
   }
 
   submit() {
     this.peerService.submit(this.peerForm).subscribe(data => {
-      this.StateStatus.cryptoConfigFile = RequestStatus.success;
+      this.state.cryptoConfigFile = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
       this.cryptogen();
     }, err => {
       console.error(err);
-      this.StateStatus.cryptoConfigFile = RequestStatus.failure;
+      this.state.cryptoConfigFile = RequestStatus.failure;
       this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
     });
   }
@@ -80,12 +90,12 @@ export class PeerComponent implements OnInit {
   cryptogen() {
     this.peerService.cryptogen().subscribe(data => {
       console.log(data);
-      this.StateStatus.cryptogen = RequestStatus.success;
+      this.state.cryptogen = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
       this.dockerCompose();
     }, err => {
       console.error(err);
-      this.StateStatus.cryptogen = RequestStatus.failure;
+      this.state.cryptogen = RequestStatus.failure;
       this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
     });
   }
@@ -93,12 +103,12 @@ export class PeerComponent implements OnInit {
   dockerCompose() {
     this.peerService.dockerCompose().subscribe(data => {
       console.log(data);
-      this.StateStatus.dockerCompose = RequestStatus.success;
+      this.state.dockerCompose = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
       this.startPeer();
     }, err => {
       console.error(err);
-      this.StateStatus.dockerCompose = RequestStatus.failure;
+      this.state.dockerCompose = RequestStatus.failure;
       this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
     });
   }
@@ -106,15 +116,13 @@ export class PeerComponent implements OnInit {
   startPeer() {
     this.peerService.startPeer().subscribe(data => {
       console.log(data);
-      this.StateStatus.peerUp = RequestStatus.success;
+      this.state.peerUp = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
     }, err => {
       console.error(err);
-      this.StateStatus.peerUp = RequestStatus.failure;
+      this.state.peerUp = RequestStatus.failure;
       this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
     });
   }
 
 }
-
-

@@ -21,3 +21,17 @@ export interface Peer {
   domain: string;
 }
 
+export interface PeerCryptoConfig {
+  name: string;
+  domain: string;
+  peerCount: number;
+  userCount: number;
+}
+
+export interface PeerStates {
+  save: RequestStatus;
+  cryptoConfigFile: RequestStatus;
+  cryptogen: RequestStatus;
+  dockerCompose: RequestStatus;
+  peerUp: RequestStatus;
+}
