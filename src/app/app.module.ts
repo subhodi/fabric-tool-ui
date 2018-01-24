@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { DataService } from './services/data.service';
 import { PeerService } from './services/peer.service';
 import { OrdererService } from './services/orderer.service';
 
@@ -53,7 +52,7 @@ const appRoutes: Routes = [
     ChartsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [DataService, PeerService, OrdererService],
+  providers: [PeerService, OrdererService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
