@@ -48,3 +48,20 @@ export interface OrdererCryptoConfigStates {
   cryptogen: RequestStatus;
 
 }
+
+export interface OrdererConfigtx {
+  ordererType: string;
+  maxMessageCount: number;
+  batchTimeout: string;
+  absoluteMaxBytes: string;
+  preferredMaxBytes: String;
+}
+
+export interface OrdererConfigtxStates {
+  save: RequestStatus;
+  configTx: RequestStatus;
+  genesisBlock: RequestStatus;
+  channelTx: RequestStatus;
+  dockerCompose: RequestStatus;
+  peerUp: RequestStatus;
+}

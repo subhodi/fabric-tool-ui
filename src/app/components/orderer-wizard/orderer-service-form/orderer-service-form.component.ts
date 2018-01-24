@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { OrdererService } from '../../../services/orderer.service';
 
-import { RequestStatus, APIResponse } from '../../../model/model.interface';
+import { RequestStatus, APIResponse, Orderer, OrdererConfigtx, OrdererConfigtxStates } from '../../../model/model.interface';
 import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
@@ -13,11 +13,11 @@ import { forEach } from '@angular/router/src/utils/collection';
 })
 export class OrdererServiceFormComponent implements OnInit {
   configtxForm: Object;
-  configtx: Object;
-  StateStatus: any = {};
+  orderer: Orderer;
+  configtx: OrdererConfigtx;
+  state: OrdererConfigtxStates;
   apiResponse: APIResponse;
   requestStatus = RequestStatus;
-  orderer: Orderer;
   constructor(private ordererService: OrdererService, private router: Router) {
     this.orderer = ordererService.getOrderer();
   }
@@ -26,7 +26,8 @@ export class OrdererServiceFormComponent implements OnInit {
     this.configtx = {
       ordererType: 'solo',
       maxMessageCount: 10,
-      batchTimeout: '2s', absoluteMaxBytes: '98 MB',
+      batchTimeout: '2s',
+      absoluteMaxBytes: '98 MB',
       preferredMaxBytes: '512 KB'
     };
 
@@ -134,7 +135,15 @@ export class OrdererServiceFormComponent implements OnInit {
         }
       }
     };
-    this.apiResponse = { 'status': true, 'message': 'Hit Save to start', path: null };
+    this.state = {
+      save: undefined,
+      configTx: undefined,
+      genesisBlock: undefined,
+      channelTx: undefined,
+      dockerCompose: undefined,
+      peerUp: undefined
+    };
+    this.apiResponse = { status: true, message: 'Hit Save to start', path: null };
   }
 
   save(configtx) {
@@ -233,24 +242,26 @@ export class OrdererServiceFormComponent implements OnInit {
         }
       }
     };
-    this.StateStatus.submit = RequestStatus.success;
-    this.StateStatus.configTx = RequestStatus.pending;
-    this.StateStatus.genesisBlock = RequestStatus.pending;
-    this.StateStatus.channelTx = RequestStatus.pending;
-    this.StateStatus.dockerCompose = RequestStatus.pending;
-    this.StateStatus.peerUp = RequestStatus.pending;
+    this.state = {
+      save: RequestStatus.success,
+      configTx: RequestStatus.pending,
+      genesisBlock: RequestStatus.pending,
+      channelTx: RequestStatus.pending,
+      dockerCompose: RequestStatus.pending,
+      peerUp: RequestStatus.pending
+    };
     this.apiResponse = { 'status': true, 'message': 'Hit submit to start', path: null };
   }
 
   configTx() {
     this.ordererService.configTx(this.configtxForm).subscribe(data => {
       console.log(data);
-      this.StateStatus.configTx = RequestStatus.success;
+      this.state.configTx = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
       this.genesisBlock();
     }, err => {
       console.error(err);
-      this.StateStatus.configTx = RequestStatus.failure;
+      this.state.configTx = RequestStatus.failure;
       this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
     });
 
@@ -259,12 +270,12 @@ export class OrdererServiceFormComponent implements OnInit {
   genesisBlock() {
     this.ordererService.genesisBlock().subscribe(data => {
       console.log(data);
-      this.StateStatus.genesisBlock = RequestStatus.success;
+      this.state.genesisBlock = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
       this.channelTx();
     }, err => {
       console.error(err);
-      this.StateStatus.genesisBlock = RequestStatus.failure;
+      this.state.genesisBlock = RequestStatus.failure;
       this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
     });
   }
@@ -272,38 +283,39 @@ export class OrdererServiceFormComponent implements OnInit {
   channelTx() {
     this.ordererService.channelTx().subscribe(data => {
       console.log(data);
-      this.StateStatus.channelTx = RequestStatus.success;
+      this.state.channelTx = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
       this.dockerCompose();
     }, err => {
       console.error(err);
-      this.StateStatus.channelTx = RequestStatus.failure;
+      this.state.channelTx = RequestStatus.failure;
       this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
     });
   }
 
-  anchorPeer() {
-    this.ordererService.anchorPeer().subscribe(data => {
-      console.log(data);
-      this.StateStatus.anchorPeer = RequestStatus.success;
-      this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
-      this.dockerCompose();
-    }, err => {
-      console.error(err);
-      this.StateStatus.anchorPeer = RequestStatus.failure;
-      this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
-    });
-  }
+  // Anchor peer functionality not yet implemented
+  // anchorPeer() {
+  //   this.ordererService.anchorPeer().subscribe(data => {
+  //     console.log(data);
+  //     this.state.anchorPeer = RequestStatus.success;
+  //     this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
+  //     this.dockerCompose();
+  //   }, err => {
+  //     console.error(err);
+  //     this.state.anchorPeer = RequestStatus.failure;
+  //     this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
+  //   });
+  // }
 
   dockerCompose() {
     this.ordererService.dockerCompose().subscribe(data => {
       console.log(data);
-      this.StateStatus.dockerCompose = RequestStatus.success;
+      this.state.dockerCompose = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
       this.startPeer();
     }, err => {
       console.error(err);
-      this.StateStatus.dockerCompose = RequestStatus.failure;
+      this.state.dockerCompose = RequestStatus.failure;
       this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
     });
   }
@@ -311,19 +323,13 @@ export class OrdererServiceFormComponent implements OnInit {
   startPeer() {
     this.ordererService.startPeer().subscribe(data => {
       console.log(data);
-      this.StateStatus.peerUp = RequestStatus.success;
+      this.state.peerUp = RequestStatus.success;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
       // this.router.navigate(['/orderer', { outlets: { ordererSection: 'orderer-output' } }]);
     }, err => {
       console.error(err);
-      this.StateStatus.peerUp = RequestStatus.failure;
+      this.state.peerUp = RequestStatus.failure;
       this.apiResponse = { 'message': JSON.parse(err['_body'])['message'], 'status': false, path: null };
     });
   }
-}
-
-interface Orderer {
-  org: string;
-  domain: string;
-  host: string;
 }

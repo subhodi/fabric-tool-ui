@@ -34,7 +34,7 @@ export class CryptogenFormComponent implements OnInit {
         }
       ]
     };
-    this.apiResponse = { 'status': true, 'message': 'Hit Save to start', path: null };
+    this.apiResponse = { status: true, message: 'Hit Save to start', path: null };
     this.state = {
       save: undefined,
       cryptoConfigFile: undefined,

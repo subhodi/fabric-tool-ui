@@ -10,12 +10,11 @@
                         <div class="form-group has-feedback">
                             <label class="control-label col-sm-2" for="name">OrdererType:</label>
                             <div class="col-sm-10">
-                                <select class="form-control" id="ordererType" name="ordererType" [(ngModel)]="configtx.ordererType" name="configtx.ordererType" required>
+                                <select class="form-control" id="ordererType" name="ordererType" [(ngModel)]="configtx.ordererType" name="configtx.ordererType"
+                                    required>
                                     <option>solo</option>
                                     <option>kafka</option>
                                 </select>
-                                <!-- <input id="ordererType" name="ordererType" type="text" [(ngModel)]="configtx.ordererType" name="configtx.ordererType" class="form-control"
-                                    required /> -->
                             </div>
                         </div>
                         <div class="form-group has-feedback">
@@ -60,7 +59,6 @@
                             </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -70,18 +68,18 @@
             <div class="panel-heading">Task list</div>
             <div class="panel-body">
                 <ul class="list-group">
-                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.submit != requestStatus.pending && StateStatus.submit}">
-                        <app-task-status status="{{StateStatus.submit}}"></app-task-status> Save</li>
-                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.configTx != requestStatus.pending && StateStatus.configTx}">
-                        <app-task-status status="{{StateStatus.configTx}}"></app-task-status> Generating ConfigTx file</li>
-                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.genesisBlock != requestStatus.pending && StateStatus.genesisBlock}">
-                        <app-task-status status="{{StateStatus.genesisBlock}}"></app-task-status>Generating Genesis block</li>
-                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.channelTx != requestStatus.pending && StateStatus.channelTx}">
-                        <app-task-status status="{{StateStatus.channelTx}}"></app-task-status>Generating Channel TX file</li>
-                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.dockerCompose != requestStatus.pending && StateStatus.dockerCompose}">
-                        <app-task-status status="{{StateStatus.dockerCompose}}"></app-task-status>Generating Docker compose file</li>
-                    <li class="list-group-item" [ngClass]="{'strikethrough': StateStatus.peerUp != requestStatus.pending && StateStatus.peerUp}">
-                        <app-task-status status="{{StateStatus.peerUp}}"></app-task-status>Starting peer</li>
+                    <li class="list-group-item" [ngClass]="{'strikethrough': state.save != requestStatus.pending && state.save}">
+                        <app-task-status status="{{state.save}}"></app-task-status> Save</li>
+                    <li class="list-group-item" [ngClass]="{'strikethrough': state.configTx != requestStatus.pending && state.configTx}">
+                        <app-task-status status="{{state.configTx}}"></app-task-status> Generating ConfigTx file</li>
+                    <li class="list-group-item" [ngClass]="{'strikethrough': state.genesisBlock != requestStatus.pending && state.genesisBlock}">
+                        <app-task-status status="{{state.genesisBlock}}"></app-task-status>Generating Genesis block</li>
+                    <li class="list-group-item" [ngClass]="{'strikethrough': state.channelTx != requestStatus.pending && state.channelTx}">
+                        <app-task-status status="{{state.channelTx}}"></app-task-status>Generating Channel TX file</li>
+                    <li class="list-group-item" [ngClass]="{'strikethrough': state.dockerCompose != requestStatus.pending && state.dockerCompose}">
+                        <app-task-status status="{{state.dockerCompose}}"></app-task-status>Generating Docker compose file</li>
+                    <li class="list-group-item" [ngClass]="{'strikethrough': state.peerUp != requestStatus.pending && state.peerUp}">
+                        <app-task-status status="{{state.peerUp}}"></app-task-status>Starting peer</li>
                 </ul>
             </div>
             <div class="panel-footer">
