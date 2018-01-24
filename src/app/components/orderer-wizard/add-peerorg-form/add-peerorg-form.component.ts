@@ -1,15 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { OrdererService } from '../../../services/orderer.service';
-import { RequestStatus, APIResponse } from '../../../model/model.interface';
+import { RequestStatus, APIResponse, Peer} from '../../../model/model.interface';
+
 @Component({
   selector: 'app-add-peerorg-form',
   templateUrl: './add-peerorg-form.component.html',
   styleUrls: ['./add-peerorg-form.component.css']
 })
+
 export class AddPeerorgFormComponent implements OnInit {
   peers: Peer[] = [];
-  peerFile: any;
+  peerFile: any; // Input file element
   apiResponse: APIResponse;
   @ViewChild('peerFile') fileInput;
   constructor(private ordererService: OrdererService) { }
@@ -33,10 +35,5 @@ export class AddPeerorgFormComponent implements OnInit {
     }
   }
 
-}
-
-interface Peer {
-  orgName: string;
-  domain: string;
 }
 

@@ -10,22 +10,20 @@
             <div class="form-group has-feedback">
               <label class="control-label col-sm-2" for="name">Org Name:</label>
               <div class="col-sm-10">
-                <input id="name" name="name" type="text" [(ngModel)]="orderer.name" name="orderer.name" class="form-control" required
-                />
+                <input id="name" name="name" type="text" [(ngModel)]="orderer.name" name="orderer.name" class="form-control" required />
               </div>
             </div>
             <div class="form-group has-feedback">
               <label class="control-label col-sm-2" for="name">Domain Name:</label>
               <div class="col-sm-10">
-                <input id="domain" name="domain" type="text" [(ngModel)]="orderer.domain" name="orderer.domain" class="form-control"
-                  required />
+                <input id="domain" name="domain" type="text" [(ngModel)]="orderer.domain" name="orderer.domain" class="form-control" required
+                />
               </div>
             </div>
             <div class="form-group has-feedback">
               <label class="control-label col-sm-2" for="name">Host Name:</label>
               <div class="col-sm-10">
-                <input id="host" name="host" type="text" [(ngModel)]="orderer.host" name="orderer.host" class="form-control" required
-                />
+                <input id="host" name="host" type="text" [(ngModel)]="orderer.host" name="orderer.host" class="form-control" required />
               </div>
             </div>
 
@@ -41,7 +39,6 @@
               </div>
             </div>
           </form>
-
         </div>
       </div>
     </div>
@@ -51,12 +48,12 @@
       <div class="panel-heading">Task list</div>
       <div class="panel-body">
         <ul class="list-group">
-            <li class="list-group-item" [ngClass]="{'strikethrough': state.save != requestStatus.pending && state.save}">
-                <app-task-status status="{{state.save}}"></app-task-status> Save</li>
-              <li class="list-group-item" [ngClass]="{'strikethrough': state.cryptoConfigFile != requestStatus.pending && state.cryptoConfigFile}">
-                <app-task-status status="{{state.cryptoConfigFile}}"></app-task-status> Generating crypto-config file</li>
-              <li class="list-group-item" [ngClass]="{'strikethrough': state.cryptogen != requestStatus.pending && state.cryptogen}">
-                <app-task-status status="{{state.cryptogen}}"></app-task-status> Generating crypto certificates</li>
+          <li class="list-group-item" [ngClass]="{'strikethrough': state.save != requestStatus.pending && state.save}">
+            <app-task-status status="{{state.save}}"></app-task-status> Save</li>
+          <li class="list-group-item" [ngClass]="{'strikethrough': state.cryptoConfigFile != requestStatus.pending && state.cryptoConfigFile}">
+            <app-task-status status="{{state.cryptoConfigFile}}"></app-task-status> Generating crypto-config file</li>
+          <li class="list-group-item" [ngClass]="{'strikethrough': state.cryptogen != requestStatus.pending && state.cryptogen}">
+            <app-task-status status="{{state.cryptogen}}"></app-task-status> Generating crypto certificates</li>
         </ul>
       </div>
       <div class="panel-footer">
