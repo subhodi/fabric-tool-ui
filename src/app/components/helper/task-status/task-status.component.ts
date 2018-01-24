@@ -9,7 +9,7 @@ import { RequestStatus } from '../../../model/model.interface';
 })
 export class TaskStatusComponent implements OnInit {
 
-  @Input() status: string;
+  @Input() status: RequestStatus;
   RequestStatus = RequestStatus;
   constructor() {
   }
