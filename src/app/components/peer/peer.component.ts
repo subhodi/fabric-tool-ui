@@ -66,11 +66,11 @@ export class PeerComponent implements OnInit {
     };
 
     this.state = {
-      save: RequestStatus.success,
-      cryptoConfigFile: RequestStatus.pending,
-      cryptogen: RequestStatus.pending,
-      dockerCompose: RequestStatus.pending,
-      peerUp: RequestStatus.pending
+      save : RequestStatus.success,
+      cryptoConfigFile: undefined,
+      cryptogen: undefined,
+      dockerCompose: undefined,
+      peerUp: undefined
     };
     this.apiResponse = { 'status': true, 'message': 'Hit submit to start', path: null };
   }
@@ -78,6 +78,10 @@ export class PeerComponent implements OnInit {
   submit() {
     this.peerService.submit(this.peerForm).subscribe(data => {
       this.state.cryptoConfigFile = RequestStatus.success;
+      this.state.cryptogen = RequestStatus.pending;
+      this.state.dockerCompose = RequestStatus.pending;
+      this.state.peerUp = RequestStatus.pending;
+
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
       this.cryptogen();
     }, err => {

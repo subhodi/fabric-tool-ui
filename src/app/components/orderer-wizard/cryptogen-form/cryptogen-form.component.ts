@@ -58,8 +58,8 @@ export class CryptogenFormComponent implements OnInit {
     };
     this.state = {
       save: RequestStatus.success,
-      cryptoConfigFile: RequestStatus.pending,
-      cryptogen: RequestStatus.pending
+      cryptoConfigFile: undefined,
+      cryptogen: undefined
     };
     this.apiResponse = { 'status': true, 'message': 'Hit submit to start', path: null };
   }
@@ -67,6 +67,7 @@ export class CryptogenFormComponent implements OnInit {
   submit() {
     this.ordererService.submit(this.cryptogenForm).subscribe(data => {
       this.state.cryptoConfigFile = RequestStatus.success;
+      this.state.cryptogen = RequestStatus.pending;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
       this.cryptogen();
     }, err => {

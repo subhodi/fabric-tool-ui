@@ -244,11 +244,11 @@ export class OrdererServiceFormComponent implements OnInit {
     };
     this.state = {
       save: RequestStatus.success,
-      configTx: RequestStatus.pending,
-      genesisBlock: RequestStatus.pending,
-      channelTx: RequestStatus.pending,
-      dockerCompose: RequestStatus.pending,
-      peerUp: RequestStatus.pending
+      configTx: undefined,
+      genesisBlock: undefined,
+      channelTx: undefined,
+      dockerCompose: undefined,
+      peerUp: undefined
     };
     this.apiResponse = { 'status': true, 'message': 'Hit submit to start', path: null };
   }
@@ -257,6 +257,10 @@ export class OrdererServiceFormComponent implements OnInit {
     this.ordererService.configTx(this.configtxForm).subscribe(data => {
       console.log(data);
       this.state.configTx = RequestStatus.success;
+      this.state.genesisBlock = RequestStatus.pending;
+      this.state.channelTx = RequestStatus.pending;
+      this.state.dockerCompose = RequestStatus.pending;
+      this.state.peerUp = RequestStatus.pending;
       this.apiResponse = { 'message': JSON.parse(data['_body'])['message'], 'status': true, path: JSON.parse(data['_body'])['path'] };
       this.genesisBlock();
     }, err => {
